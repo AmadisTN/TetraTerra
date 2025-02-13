@@ -19,7 +19,7 @@
 	focus = {
 		id = FRA_devalue_the_franc
 		icon = GFX_focus_fra_devalue_the_franc
-		x = 3
+		x = 3 # testeeee
 		y = 0
 		
 		prerequisite = {}
