@@ -13,13 +13,13 @@
 	initial_show_position = {
 		x = 0
 	}
-
 	
 	default = no
+
 	focus = {
 		id = FRA_devalue_the_franc
 		icon = GFX_focus_fra_devalue_the_franc
-		x = 3 # testeeee
+		x = 3
 		y = 0
 		
 		prerequisite = {}
@@ -137,51 +137,51 @@
 		}
 	}
 	focus = {
-			id = FRA_invest_in_the_metropole
-			icon = GFX_focus_generic_low_cost_housing
-			x = -2
-			y = 1
+		id = FRA_invest_in_the_metropole
+		icon = GFX_focus_generic_low_cost_housing
+		x = -2
+		y = 1
+		
+		prerequisite = { focus = FRA_devalue_the_franc }
+		mutually_exclusive = { }
+		relative_position_id = FRA_devalue_the_franc
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
 			
-			prerequisite = { focus = FRA_devalue_the_franc }
-			mutually_exclusive = { }
-			relative_position_id = FRA_devalue_the_franc
-			cost = 7.5
-	
-			ai_will_do = {
-				factor = 1
-			}
-	
-			available = {
-				
-			}
-			
-			bypass = {
-	
-			}
-	
-			cancel_if_invalid = yes
-			continue_if_invalid = no
-			available_if_capitulated = no
-	
-			search_filters = { FOCUS_FILTER_STABILITY }
-			completion_reward = {
-				add_stability = 0.025
-				capital_scope = {
-					limit = { 
-						is_core_of = ROOT 
-						infrastructure < 5
-						not = { has_state_flag = FRA_autoroutes_target }
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-					add_extra_state_shared_building_slots = 2
-					set_state_flag = FRA_autoroutes_target
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.025
+			capital_scope = {
+				limit = { 
+					is_core_of = ROOT 
+					infrastructure < 5
+					not = { has_state_flag = FRA_autoroutes_target }
 				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+				set_state_flag = FRA_autoroutes_target
 			}
-		}	
+		}
+	}	
 	focus = {
 		id = FRA_metropolitan_france
 		icon = GFX_focus_CHL_domestic_production_of_the_willys_mb
@@ -5014,7 +5014,7 @@
 
 	focus = { # ----------------------------------------------------
 		id = FRA_free_overseas_territories
-		icon = GFX_focus_SWE_refuge_for_revolutionaries
+		icon = GFX_goal_anschluss
 		x = -3
 		y = 1
 		
@@ -5069,7 +5069,7 @@
 
 	focus = { # ----------------------------------------------------
 		id = FRA_free_africa
-		icon = GFX_focus_SWE_refuge_for_revolutionaries
+		icon = GFX_goal_anschluss
 		x = -1
 		y = 1
 		
@@ -5082,6 +5082,60 @@
 		}
 
 		relative_position_id = FRA_total_decolonisation
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_temp_variable = { FRA_pp_africa_free = 0 }
+			if = { # Senegal
+				limit = {
+					SEN = {
+						OR = {
+							any_core_state = { is_controlled_by = ROOT }
+							is_subject_of = ROOT
+						}
+					}
+				}
+				release = SEN
+				set_autonomy = {
+					target = SEN
+					autonomy_state = autonomy_free
+				}
+				add_to_temp_variable = { FRA_pp_africa_free = 5 }
+			}
+			add_political_power = FRA_pp_africa_free
+		}
+	}
+
+	focus = { # ----------------------------------------------------
+		id = FRA_ideological_union
+		icon = GFX_focus_ETH_african_union
+		x = -1
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_free_overseas_territories
+		}
+		prerequisite = {
+			focus = FRA_free_africa
+		}
+
+		relative_position_id = FRA_free_africa
 		cost = 5
 
 		ai_will_do = {
