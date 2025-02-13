@@ -1,0 +1,32 @@
+MFC_my_first_decisions_cat = {
+	MFC_add_stability = {
+		icon = generic_industry #icon on the decision
+
+		available = { # allow the decision to be taken if all the conditions within it are true
+			has_stability < 1 # 1 = 100%, if stability is less than 100% than it's true
+		}
+
+		visible = { # the decision will be visible to the player if all the conditions within it are true
+			always = yes # always visible to the player
+		}
+		cost = 50 #cost 50 Political Power
+		fire_only_once = yes # can only be taken once
+
+		complete_effect = { # take effect once it's completed (can take multiple days, 0 if not precised)
+			add_stability = 0.1 # add 10% stability
+		}
+
+		ai_will_do = { # precises how much chances is that the ai takes it (0 if not precised)
+			base = 0 # base chances of taking it = 0
+			modifier = {
+				add = 1
+				has_stability < 0.6
+				has_political_power > 155 # IF stability < 60% AND PP > 155, then the AI will have a chance of 1 to take the decision
+			}
+			modifier = {
+				factor = 2
+				has_political_power > 300 # IF PP > 300, than the chances are DOUBLED (from 1 to 2 if the previous one is true)
+			}
+		}
+	}
+}

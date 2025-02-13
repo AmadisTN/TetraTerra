@@ -1,0 +1,35 @@
+add_namespace = tet_france
+
+country_event = { # ----- The 3 Patents :
+	id = tet_france.1
+	title = tet_france.1.t
+	desc = tet_france.1.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	option = { # Keep the patents secret
+		name = tet_france.1.a
+		add_breakthrough_progress = {
+			value = 0.75
+			specialization = specialization_nuclear
+		}
+	}
+	option = { # Publish the patents
+		name = tet_france.1.b
+		add_political_power = 50
+		add_breakthrough_progress = {
+			value = 0.25
+			specialization = specialization_nuclear
+		}
+		every_other_country = {
+			#limit = {
+			#	has_facility_specialization = specialization_nuclear
+			#}
+			add_breakthrough_progress = {
+				value = 0.25
+				specialization = specialisation_nuclear
+			}
+		}
+	}
+}

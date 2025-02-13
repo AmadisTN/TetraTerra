@@ -1,0 +1,38 @@
+add_namespace = mod_event
+
+country_event = {
+	id = mod_event.1
+	title = mod_event.1.t
+	desc = mod_event.1.d # description
+	picture = GFX_report_event_generic_read_write
+
+	trigger = { # what will trigger the event
+		is_ai = no # will not show the event to AI
+	} 
+
+	mean_time_to_happen = { # When the event will happend
+		days = 1
+	}
+
+	fire_only_once = yes # only triggers the event once
+
+	option = { # the selectable options
+		name = mod_event.1.a
+		if = {
+			limit = { 
+				has_war = yes # check if the player is at war
+			}
+
+			every_other_country = { #applies to other countries
+				limit = {
+					has_war_with = ROOT # applies only to the countries the player is at war
+				}
+
+				add_ideas = my_First_Idea
+			}
+		}
+		else = {
+			add_ideas = my_First_Idea # if false, applies to the player
+		}
+	}
+}

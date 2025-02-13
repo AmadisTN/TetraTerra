@@ -1,0 +1,149 @@
+﻿l_english:
+
+# -------------------------------------------- Economic France :
+
+FRA_develop_the_Algerians_deposits: "Develop the Algerian Deposits"
+FRA_develop_the_Algerians_deposits_desc: ""
+
+FRA_launch_excavations_in_Mauritania: "Launch Excavations in Mauritania"
+FRA_launch_excavations_in_Mauritania_desc: ""
+
+FRA_end_the_imperialist_policy: "End the Imperialist Policy"
+FRA_end_the_imperialist_policy_desc: ""
+
+FRA_crush_the_resistance: "Crush the Resistance"
+FRA_crush_the_resistance_desc: ""
+
+FRA_liberalize_the_economy: "Liberalize the Economy"
+FRA_liberalize_the_economy_desc: ""
+
+FRA_protect_french_craftsmanship: "Protect French Craftsmanship"
+FRA_protect_french_craftsmanship_desc: ""
+
+FRA_self_reliant_economy: "Self Reliant Economy"
+FRA_self_reliant_economy_desc: ""
+
+# -------------------------------------------- Military France :
+
+FRA_secure_the_traditional_doctrines: "Secure the Traditional Doctrines"
+FRA_secure_the_traditional_doctrines_desc: ""
+
+FRA_try_the_new_way: "Try the New Way"
+FRA_try_the_new_way_desc: ""
+
+# -------------------------------------------- Communist France :
+
+FRA_further_the_reforms: "Further the Reforms"
+FRA_further_the_reforms_desc: ""
+
+FRA_embrace_our_communist_legacy: "Embrace Our Communist Legacy"
+FRA_embrace_our_communist_legacy_desc: ""
+
+# -------------------------------------------- Democratic France :
+
+# Democratic France External
+FRA_Reafirm_the_Republic: "Reafirm the Republic"
+FRA_Reafirm_the_Republic_desc: ""
+
+FRA_support_the_Chineese: "Support the Chineese"
+FRA_support_the_Chineese_desc: ""
+
+FRA_fortify_Indochina: "Fortify Indochina"
+FRA_fortify_Indochina_desc: ""
+
+FRA_block_Italian_influence: "Block Italian influence"
+FRA_block_Italian_influence_desc: ""
+
+FRA_French_interventionism: "French Interventionism"
+FRA_French_interventionism_desc: ""
+
+FRA_us_loans: "US Loans"
+FRA_us_loans_desc: ""
+
+# Democratic France Internal
+FRA_review_internal_policy: "Review Internal Policy"
+FRA_review_internal_policy_desc: ""
+
+FRA_dissolve_the_Assembly: "Dissolve the Assembly"
+FRA_dissolve_the_Assembly_desc: ""
+
+FRA_work_with_the_Assembly: "Work with the Assembly"
+FRA_work_with_the_Assembly_desc: ""
+
+FRA_stand_new_elections: "Stand New Elections"
+FRA_stand_new_elections_desc: ""
+
+FRA_reconcile_the_left_and_right: "Reconcile the Left and Right"
+FRA_reconcile_the_left_and_right_desc: ""
+
+FRA_challenge_the_institutions: "Challenge the Institutions"
+FRA_challenge_the_institutions_desc: ""
+
+FRA_reform_the_judicial_powers: "Reform the Judicial Powers"
+FRA_reform_the_judicial_powers_desc: ""
+
+FRA_introduce_social_security: "Introduce Social Security"
+FRA_introduce_social_security_desc: ""
+
+FRA_proportional_representation: "Proportional Representation"
+FRA_proportional_representation_desc: ""
+
+FRA_strengthen_the_president: "Strengthen the President"
+FRA_strengthen_the_president_desc: ""
+
+FRA_premature_deals: "Premature Deals"
+FRA_premature_deals_desc: ""
+
+FRA_a_new_constitution: "A New Constitution"
+FRA_a_new_constitution_desc: ""
+
+FRA_form_the_fourth_republic: "Form the Fourth Republic"
+FRA_form_the_fourth_republic_desc: ""
+
+FRA_review_the_French_research_program: "Review the French Research Program"
+FRA_review_the_French_research_program_desc: ""
+
+FRA_pursue_international_collaboration: "Pursue International Collaboration"
+FRA_pursue_international_collaboration_desc: ""
+
+FRA_capital_of_innovation: "Capital of Innovation"
+FRA_capital_of_innovation_desc: ""
+
+FRA_French_savoir_faire: "French Savoir-Faire"
+FRA_French_savoir_faire_desc: ""
+
+FRA_file_the_patents: "File the Patents"
+FRA_file_the_patents_desc: ""
+
+FRA_the_Pierrelatte_program: "The Pierrelatte Program"
+FRA_the_Pierrelatte_program_desc: ""
+
+FRA_tests_in_Algerian_Sahara: "Tests in the Algerian Sahara"
+FRA_tests_in_Algerian_Sahara_desc: ""
+
+FRA_tests_in_French_Polynesia: "Tests in French Polynesia"
+FRA_tests_in_French_Polynesia_desc: ""
+
+# -------------------------------------------- Fascist France :
+
+FRA_suppress_labour_regulations: "Suppress Labour Regulations"
+FRA_suppress_labour_regulations_desc: ""
+
+FRA_utilize_foreign_labour: "Utilize Foreign Labour"
+FRA_utilize_foreign_labour_desc: ""
+
+FRA_french_militia: "French Militia"
+FRA_french_militia_desc: ""
+
+FRA_french_nationalism: "French Nationalism"
+FRA_french_nationalism_desc: ""
+
+FRA_latin_nationalism: "Latin Nationalism"
+FRA_latin_nationalism_desc: ""
+
+# The 3 Patents :
+tet_france.1: "The 3 Patents"
+tet_france.1.t: "The 3 Patents"
+tet_france.1.d: ""
+tet_france.1.a: "Keep the patents secret!"
+tet_france.1.b: "Publish the patents!"

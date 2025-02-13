@@ -1,0 +1,856 @@
+ideas = {
+	country = {
+		# ---------------------------------------------- Old ideas
+		FRA_global_investments = {
+			picture = generic_exploit_mines
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				local_resources_factor = 0.1
+				production_speed_buildings_factor = 0.02
+			}
+		}
+
+		FRA_victors_of_wwi_old_doc = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			picture = generic_victors_of_ww1
+			
+			modifier = {
+				war_support_factor = -0.10
+				land_doctrine_cost_factor = 0.5
+			}
+		}
+
+		FRA_victors_of_wwi_new_way = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			picture = generic_victors_of_ww1
+			
+			modifier = {
+				conscription = -0.003
+				war_support_factor = -0.10
+				land_doctrine_cost_factor = 0.25
+			}
+		}
+
+		FRA_fortification_focus = {
+		
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_speed_bunker_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				bunker_max_level_terrain_limit = 1
+				coastal_bunker_max_level_terrain_limit = 1
+			}
+		}
+
+		FRA_fortification_focus_anti_air = {
+		
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_speed_bunker_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				production_speed_anti_air_building_factor = 0.15
+				bunker_max_level_terrain_limit = 1
+				coastal_bunker_max_level_terrain_limit = 1
+				factory_bomb_factor = 0.5
+			}
+		}
+
+		FRA_communism_banned = {
+			picture = anti_soviet_pact
+			allowed = {
+				always = no
+				
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			cancel = {
+				NOT = {
+					communism > 0
+				}
+			}
+
+			modifier = {
+				communism_drift = -0.1
+			}
+		}
+
+		FRA_strengthen_government_support_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				stability_weekly = 0.002
+				war_support_weekly = 0.002			
+			}
+	    }
+
+		FRA_disjointed_government = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+				communism_drift = 0.01
+				neutrality_drift = 0.01
+				fascism_drift = 0.01
+			}
+		}
+
+		FRA_disjointed_government_liberte = { # democratic
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+				neutrality_drift = 0.01
+				fascism_drift = 0.01
+			}
+		}
+
+		FRA_disjointed_government_egalite = { # democratic
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+				communism_drift = 0.01
+				fascism_drift = 0.01
+			}
+		}
+
+		FRA_disjointed_government_fraternite = { # democratic
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+				communism_drift = 0.01
+				neutrality_drift = 0.01
+			}
+		}
+
+		FRA_disjointed_government_only_communism = { # democratic
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+				communism_drift = 0.01
+			}
+		}
+
+		FRA_disjointed_government_only_neutrality = { # democratic
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+				neutrality_drift = 0.01
+			}
+		}
+
+		FRA_disjointed_government_only_fascism = { # democratic
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+				fascism_drift = 0.01
+			}
+		}
+
+		FRA_disjointed_government_no_ideology = { # democratic
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+			}
+		}
+
+		FRA_disjointed_government_challenge = { # democratic
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 1
+				stability_factor = -0.15
+				surrender_limit = -0.5
+			}
+		}
+
+		FRA_disjointed_government_soft = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.5
+				stability_factor = -0.10
+				surrender_limit = -0.5
+			}
+		}
+
+		FRA_disjointed_government_fascist = { # fascist
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.05
+				communism_drift = 0.01
+				neutrality_drift = 0.01
+				fascism_drift = 0.01
+			}
+		}
+
+		# ----------------------------------------------- My ideas
+		# Economic :
+		FRA_maneuver_warfare = {
+			picture = SOV_scientist_defect
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				army_speed_factor = 0.05
+				org_loss_when_moving = -0.15
+			}
+		}
+
+		FRA_guerre_eclair = {
+			picture = SOV_scientist_defect
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_speed_factor = 0.1
+				breakthrough_factor = 0.1
+				org_loss_when_moving = -0.15
+			}
+		}
+
+		FRA_air_dominance_eclair = {
+			picture = generic_air_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				small_plane_airframe = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				small_plane_cas_airframe = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+
+			modifier = {
+				ground_attack_factor = 0.05
+			}
+		}
+
+		FRA_jewish_exiles = {
+			picture = SOV_scientist_defect
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				weekly_manpower = 500
+				neutrality_drift = 0.01
+			}
+		}
+
+		FRA_local_industrialisation = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.1
+				production_speed_arms_factory_factor = 0.075
+			}
+		}
+
+		FRA_french_craftsmanship = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				industrial_capacity_factory = 0.075
+				industrial_capacity_dockyard = 0.075
+			}
+			research_bonus = { industry = -0.05}
+		}
+
+
+		# Communist :
+		FRA_matignon_agreements_communist = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = 0.15
+				consumer_goods_factor = 0.15
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+				political_power_gain = 0.2
+			}
+		}
+
+		FRA_matignon_agreements_soft = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				industrial_capacity_factory = -0.075
+				industrial_capacity_dockyard = -0.075
+				stability_factor = 0.075
+				consumer_goods_factor = 0.025
+			}
+		}
+
+		FRA_gender_equality = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.25
+				industrial_capacity_dockyard = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		FRA_communist_legacy = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				communism_drift = 0.05
+			}
+		}
+
+		FRA_womens_in_the_army = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.015
+				war_support_factor = 0.05
+				training_time_army_factor = 0.05
+				female_divisional_commander_chance = 0.25
+			}
+		}
+
+		FRA_womens_in_the_aviation = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				air_ace_generation_chance_factor = 0.10
+			}
+		}
+
+		FRA_ideological_neutrality = {
+			picture = generic_production_bonus
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				join_faction_tension = 1
+				send_volunteers_tension = 0.50
+				guarantee_tension = 0.50
+				embargo_threshold_factor = 0.5
+				enemy_justify_war_goal_time = 0.5
+			}
+		}
+
+		FRA_global_revolution = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				justify_war_goal_time = -0.25
+				army_attack_factor = 0.05
+				army_defence_factor = -0.05
+			}
+		}
+		
+		# Democratic
+		FRA_laicite = {
+			picture = SOV_scientist_defect
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				democratic_drift = 0.02
+				research_speed_factor = 0.05
+			}
+		}
+
+		FRA_work_with_the_assembly = {
+			picture = SOV_scientist_defect
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				political_advisor_cost_factor = -0.5
+			}
+		}
+
+		FRA_new_republic = {
+			picture = generic_democratic_drift_bonus
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				political_power_gain = 0.25
+				stability_weekly = 0.002
+				production_factory_efficiency_gain_factor = 0.15
+				political_advisor_cost_factor = -0.25
+				theorist_cost_factor = -0.25
+				army_chief_cost_factor = -0.25
+				navy_chief_cost_factor = -0.25
+				air_chief_cost_factor = -0.25
+				high_command_cost_factor = -0.25
+			}
+		}
+
+		FRA_international_collaboration = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+
+		FRA_capital_of_innovation = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				research_speed_factor = 0.05
+				production_speed_facility_factor = 0.33
+			}
+		}
+
+		FRA_french_savoir_faire = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				specialization_nuclear_speed_factor = 0.15
+			}
+		}
+
+		FRA_collecting_uranium = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.05
+				local_resources_factor = 0.05
+			}
+		}
+
+		FRA_buying_heavy_water = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.10
+				research_speed_factor = 0.025
+				specialization_nuclear_speed_factor = 0.25
+			}
+		}
+
+		# Fascist :
+		FRA_travail_free = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.10
+				local_resources_factor = 0.15
+			}
+		}
+
+		FRA_famille = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			modifier = {
+				stability_weekly = 0.001
+			}
+		}
+
+		FRA_patrie = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			modifier = {
+				war_support_weekly = 0.001
+			}
+		}
+
+		FRA_patrie_france = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			modifier = {
+				war_support_weekly = 0.001
+				army_core_attack_factor = 0.10
+				army_core_defence_factor = 0.10
+			}
+		}
+
+		FRA_patrie_latin = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			modifier = {
+				war_support_weekly = 0.001
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+			}
+		}
+
+		FRA_latin_joint_naval_program = {
+			picture = generic_research_bonus
+
+			allowed_civil_war = {
+				is_in_faction = yes
+				has_government = fascism
+			}
+
+			modifier = {
+				production_speed_naval_facility_factor = 0.15
+				specialization_naval_speed_factor = 0.15
+				production_speed_dockyard_factor = 0.10
+				#industrial_capacity_dockyard = 0.075
+			}
+		}
+	}
+}
