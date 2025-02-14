@@ -10,11 +10,35 @@ FRA_victors_of_wwi_new_way_desc: ""
 FRA_strengthen_government_support_idea: "Strengthen Government Support"
 FRA_strengthen_government_support_idea_desc: ""
 
-FRA_disjointed_government_challenge: "Disjointed Government"
-FRA_disjointed_government_challenge_desc: ""
+FRA_disjointed_government_liberte: "Disjointed Government"
+FRA_disjointed_government_liberte_desc: ""
+
+FRA_disjointed_government_egalite: "Disjointed Government"
+FRA_disjointed_government_egalite_desc: ""
+
+FRA_disjointed_government_fraternite: "Disjointed Government"
+FRA_disjointed_government_fraternite_desc: ""
+
+FRA_disjointed_government_fraternite: "Disjointed Government"
+FRA_disjointed_government_fraternite_desc: ""
+
+FRA_disjointed_government_only_communism: "Disjointed Government"
+FRA_disjointed_government_only_communism_desc: ""
+
+FRA_disjointed_government_only_neutrality: "Disjointed Government"
+FRA_disjointed_government_only_neutrality_desc: ""
+
+FRA_disjointed_government_only_fascism: "Disjointed Government"
+FRA_disjointed_government_only_fascism_desc: ""
+
+FRA_disjointed_government_no_ideology: "Disjointed Government"
+FRA_disjointed_government_no_ideology_desc: ""
 
 FRA_disjointed_government_soft: "Disjointed Government"
 FRA_disjointed_government_soft_desc: ""
+
+FRA_disjointed_government_challenge: "Disjointed Government"
+FRA_disjointed_government_challenge_desc: ""
 
 FRA_disjointed_government_fascist: "Disjointed Government"
 FRA_disjointed_government_fascist_desc: ""

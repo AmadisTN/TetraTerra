@@ -3993,6 +3993,7 @@
 
 		available = {
 			has_idea = FRA_matignon_agreements
+			communism > 0.50
 		}
 		
 		bypass = {
