@@ -641,6 +641,30 @@ ideas = {
 			}
 		}
 
+		FRA_renseignements_generaux = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				operative_slot = 1
+				intelligence_agency_defense = 0.25
+				#intel_from_combat_factor = 0.25
+				encryption = 0.15
+				decryption = 0.15
+				#boost_ideology_mission_factor = 0.15
+				#boost_resistance_factor = 0.15
+			}
+		}
+
 		FRA_global_revolution = {
 			picture = generic_democratic_drift_bonus
 			allowed = {

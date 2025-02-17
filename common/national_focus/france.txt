@@ -2162,11 +2162,11 @@
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
-			FRA_right_wing_riot_effect = yes
-			add_popularity = { ideology = communism popularity = 0.05 }
 			set_temp_variable = { communism_temp = party_popularity@communism }
 			multiply_temp_variable = { communism_temp = 0.25 }
 			add_stability = communism_temp
+			add_popularity = { ideology = communism popularity = 0.05 }
+			FRA_right_wing_riot_effect = yes
 
 			hidden_effect = {
 				if = {
@@ -2529,18 +2529,57 @@
 	}	
 
 	focus = { # ----------------------------------------------------
-		id = FRA_national_referendum
-		icon = GFX_focus_generic_social_democracy
-		x = 0
+		id = FRA_a_change_in_government
+		icon = GFX_focus_attack_france
+		x = 1
 		y = 2
 		
 		prerequisite = {
 			focus = FRA_celebrate_the_commune
 			focus = FRA_legal_equality
 		}
-		mutually_exclusive = { focus = FRA_force_the_issue }
 		relative_position_id = FRA_celebrate_the_commune
-		cost = 10
+		cost = 2.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject = no
+		}
+		
+		bypass = {
+			has_government = communism
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 25
+			set_temp_variable = { communism_gov = party_popularity@communism }
+			multiply_temp_variable = { communism_gov = 0.1 }
+			set_temp_variable = { non_communism_gov = -0.10 }
+			add_to_temp_variable = { non_communism_gov = communism_gov }
+			add_war_support = non_communism_gov
+		}
+	}
+
+	focus = { # ----------------------------------------------------
+		id = FRA_national_referendum
+		icon = GFX_focus_generic_social_democracy
+		x = -1
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_a_change_in_government
+		}
+		mutually_exclusive = { focus = FRA_force_the_issue }
+		relative_position_id = FRA_a_change_in_government
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -2584,16 +2623,15 @@
 	focus = {
 		id = FRA_force_the_issue
 		icon = GFX_focus_GER_liberate_exploited_colonial_workers
-		x = 2
-		y = 2
+		x = 1
+		y = 1
 		
 		prerequisite = {
-			focus = FRA_celebrate_the_commune
-			focus = FRA_legal_equality
+			focus = FRA_a_change_in_government
 		}
 		mutually_exclusive = { focus = FRA_national_referendum }
-		relative_position_id = FRA_celebrate_the_commune
-		cost = 10
+		relative_position_id = FRA_a_change_in_government
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -2634,7 +2672,7 @@
 	focus = {
 		id = FRA_reconciliation
 		icon = GFX_goal_generic_major_alliance
-		x = -1
+		x = 0
 		y = 1
 		
 		prerequisite = {
@@ -2670,15 +2708,63 @@
 	focus = { # ----------------------------------------------------
 		id = FRA_protect_freedom_of_speech
 		icon = GFX_focus_spr_torchbearers_of_tomorrow
-		x = -1
+		x = -2
 		y = 1
 		
+		prerequisite = {
+			focus = FRA_national_referendum
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		relative_position_id = FRA_national_referendum
+		cost = 2.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FRA_prosecute_royalist_sympathizers
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 15
+			every_other_country = {
+				limit = {
+					has_government = democratic
+				}
+				add_opinion_modifier = {
+					target = FRA
+					modifier = medium_increase
+				}
+			}
+		}
+	}
+
+	focus = { # ----------------------------------------------------
+		id = FRA_socialist_democracy
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = 0
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_protect_freedom_of_speech
+		}
 		prerequisite = {
 			focus = FRA_reconciliation
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
-		relative_position_id = FRA_reconciliation
-		cost = 5
+		relative_position_id = FRA_protect_freedom_of_speech
+		cost = 2.5
 
 		ai_will_do = {
 			factor = 1
@@ -2697,23 +2783,14 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_political_power = 25
-			every_other_country = {
-				limit = {
-					has_government = democratic
-				}
-				add_opinion_modifier = {
-					target = FRA
-					modifier = medium_increase
-				}
-			}
+			
 		}
 	}
 
 	focus = {
 		id = FRA_constitutional_convention
 		icon = GFX_focus_generic_treaty
-		x = 0
+		x = -1
 		y = 2
 		
 		prerequisite = {
@@ -2739,7 +2816,8 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_political_power = 120
+			add_political_power = 100
+			add_stability = 0.05
 		}
 	}
 
@@ -3157,7 +3235,7 @@
 	focus = { # ----------------------------------------------------
 		id = FRA_mother_of_all_communes
 		icon = GFX_focus_por_workers_of_iberia
-		x = 1
+		x = 0
 		y = 1
 		
 		prerequisite = {
@@ -3192,7 +3270,7 @@
 	focus = { # ----------------------------------------------------
 		id = FRA_bolcheviks_of_the_west
 		icon = GFX_focus_SOV_the_path_of_marxism_leninism
-		x = -1
+		x = 0
 		y = 1
 		
 		prerequisite = {
@@ -3201,7 +3279,7 @@
 		}
 		mutually_exclusive = { focus = FRA_mother_of_all_communes }
 		relative_position_id = FRA_revolution_to_the_utmost
-		cost = 5
+		cost = 2.5
 
 		ai_will_do = {
 			factor = 1
@@ -3220,14 +3298,15 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			add_command_power = 10
 			add_opinion_modifier = {
 				target = SOV
-				modifier = huge_increase
+				modifier = large_increase
 			}
 			SOV = {
 				add_opinion_modifier = {
 					target = FRA
-					modifier = huge_increase
+					modifier = large_increase
 				}
 			}
 		}
@@ -3334,15 +3413,14 @@
 	focus = { # ----------------------------------------------------
 		id = FRA_heartland_of_communist_innovation
 		icon = GFX_focus_generic_socialist_science
-		x = 2
+		x = -2
 		y = 1
 		
 		prerequisite = {
 			focus = FRA_loyalty_to_moscow
-			focus = FRA_loyalty_to_the_cause
 		}
 		relative_position_id = FRA_loyalty_to_moscow
-		cost = 7.5
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -3362,6 +3440,40 @@
 
 		completion_reward = {
 			add_to_tech_sharing_group = continuous_tech_share
+		}
+	}
+
+	focus = { # ----------------------------------------------------
+		id = FRA_bureau_des_renseignements_generaux
+		icon = GFX_focus_generic_secret_service_agency
+		x = 2
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_loyalty_to_moscow
+			focus = FRA_loyalty_to_the_cause
+		}
+		relative_position_id = FRA_loyalty_to_moscow
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_in_faction = yes
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = FRA_renseignements_generaux
 		}
 	}
 
@@ -3450,7 +3562,7 @@
 	focus = {
 		id = FRA_revolution_to_the_utmost
 		icon = GFX_focus_focus_fra_revolution_utmost
-		x = 1
+		x = 0
 		y = 1
 		
 		prerequisite = {
@@ -3485,7 +3597,7 @@
 	focus = {
 		id = FRA_destroy_the_counter_revolution
 		icon = GFX_goal_generic_secret_weapon
-		x = 0
+		x = 1
 		y = 2
 		
 		prerequisite = {
@@ -3524,21 +3636,23 @@
 	focus = { # -----------------------------------------------------
 		id = FRA_prosecute_royalist_sympathizers
 		icon = GFX_goal_tfv_burn_the_royal_portraits
-		x = 1
+		x = 2
 		y = 1
 		
 		prerequisite = {
 			focus = FRA_revolution_to_the_utmost
 		}
 		relative_position_id = FRA_revolution_to_the_utmost
-		cost = 5
+		cost = 2.5
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			
+			NOT = {
+				has_completed_focus = FRA_protect_freedom_of_speech
+			}
 		}
 		
 		bypass = {
@@ -3551,9 +3665,52 @@
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_war_support = 0.05
+			set_temp_variable = { FRA_nonalign_pop = party_popularity@neutrality }
+			multiply_temp_variable = { FRA_nonalign_pop = -0.5 }
 			add_popularity = {
 				ideology = neutrality
-				popularity = -1
+				popularity = FRA_nonalign_pop
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------------
+		id = FRA_ban_christianism
+		icon = GFX_focus_BRA_state_atheism
+		x = 1
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_prosecute_royalist_sympathizers
+		}
+		relative_position_id = FRA_prosecute_royalist_sympathizers
+		cost = 2.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_completed_focus = FRA_force_the_issue
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_political_power = 50
+			set_temp_variable = { FRA_nonalign_pop = party_popularity@neutrality }
+			multiply_temp_variable = { FRA_nonalign_pop = -0.15 }
+			add_stability = FRA_nonalign_pop
+			multiply_temp_variable = { FRA_nonalign_pop = 6.85 }
+			add_popularity = {
+				ideology = neutrality
+				popularity = FRA_nonalign_pop
 			}
 		}
 	}
@@ -4352,8 +4509,8 @@
 	focus = {
 		id = FRA_national_champions
 		icon = GFX_focus_generic_modernize_industry
-		x = 1
-		y = 1
+		x = 0
+		y = 2
 		
 		prerequisite = {
 			focus = FRA_general_work_council
@@ -4534,7 +4691,7 @@
 		id = FRA_the_blum_viollette_proposal
 		icon = GFX_goal_generic_improve_relations
 		x = 4
-		y = 1
+		y = 2
 		
 		offset = {
 			x = -8
@@ -4677,7 +4834,11 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			add_stability = -0.0025
+			set_temp_variable = { FRA_rw_support = party_popularity@neutrality }
+			add_to_temp_variable = { FRA_rw_support = party_popularity@fascism }
+			multiply_temp_variable = { FRA_rw_support = -0.1 }
+			add_stability = FRA_rw_support
+			
 			remove_worker_shortage_effect = yes
 		}
 	}
@@ -4843,6 +5004,12 @@
 				add_to_temp_variable = { FRA_pp_decol_d = 50 }
 			}
 			add_political_power = FRA_pp_decol_d
+			if = {
+				limit = {
+					has_idea = FRA_political_violence
+				}
+				FRA_right_wing_riot_effect = yes
+			}
 		}
 	}
 
@@ -4879,7 +5046,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_political_power = -25
+			add_political_power = -15
 			every_owned_state = {
 				limit = {
 					is_controlled_by = ROOT
@@ -5179,7 +5346,7 @@
 
 	focus = { # ----------------------------------------------------
 		id = FRA_the_algerian_dilemma
-		icon = GFX_focus_SWE_refuge_for_revolutionaries
+		icon = GFX_goal_anschluss
 		x = 0
 		y = 2
 		
@@ -5527,7 +5694,7 @@
 		id = FRA_Reafirm_the_Republic
 		icon = GFX_goal_support_democracy
 		x = 0
-		y = 3
+		y = 4
 		
 		offset = {
 			x = -1
@@ -6208,8 +6375,8 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_stability = -0.05
 			add_political_power = 150
+			FRA_right_wing_riot_effect = yes
 		}
 	}
 
@@ -8505,11 +8672,14 @@
 	focus = {
 		id = FRA_freedom_front
 		icon = GFX_focus_focus_fra_national_resistance_council
-		x = -1
-		y = 1
+		x = -2
+		y = 2
 		
 		prerequisite = {
 			focus = FRA_protect_the_rights_of_man
+		}
+		prerequisite = {
+			focus = FRA_fraternite
 		}
 		relative_position_id = FRA_protect_the_rights_of_man
 		cost = 10
@@ -8694,7 +8864,7 @@
 	focus = { # ----------------------------------------------------
 		id = FRA_national_front
 		icon = GFX_focus_generic_fascist_troops
-		x = 3
+		x = 4
 		y = 1
 		
 		prerequisite = {
@@ -8958,7 +9128,7 @@
 	focus = {
 		id = FRA_utilize_the_leagues
 		icon = GFX_focus_generic_strike_at_democracy1
-		x = 15
+		x = 16
 		y = 1
 		relative_position_id = FRA_revive_the_national_bloc
 		
