@@ -507,6 +507,21 @@ ideas = {
 
 
 		# Communist :
+		FRA_general_collectivization = {
+			picture = generic_democratic_drift_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
 		FRA_matignon_agreements_communist = {
 			picture = generic_democratic_drift_bonus
 			allowed = {

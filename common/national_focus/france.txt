@@ -5740,8 +5740,18 @@
 		}
 
 		available = {
-			NOT = {
-				has_completed_focus = FRA_utilize_the_leagues
+			if = {
+				limit = { 
+					has_dlc = "La Resistance"
+				}
+				NOT = {
+					has_completed_focus = FRA_utilize_the_leagues
+				}
+			}
+			else = {
+				NOT = {
+					has_completed_focus = FRA_right_wing_rhetoric
+				}
 			}
 			fascism < 0.25
 		}
@@ -5897,8 +5907,18 @@
 		}
 
 		available = {
-			NOT = {
-				has_completed_focus = FRA_invite_communist_ministers
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				NOT = {
+					has_completed_focus = FRA_invite_communist_ministers
+				}
+			}
+			else = {
+				NOT = {
+					has_completed_focus = FRA_leftist_rhetoric
+				}
 			}
 			communism < 0.45
 		}
@@ -8598,14 +8618,17 @@
 	}
 	focus = {
 		id = FRA_leftist_rhetoric
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_focus_por_workers_of_iberia
 	 	available = {
+			NOT = {
+				has_completed_focus = FRA_fraternite
+			}
 		}
 	 	prerequisite = { focus = FRA_form_the_popular_front }
 		x = -5
 		y = 1
 		relative_position_id = FRA_form_the_popular_front
-		cost = 10
+		cost = 7.5
 		allow_branch = {
 			NOT = { has_dlc = "La Resistance" }
 			if = {
@@ -8658,21 +8681,83 @@
 					modifier = FRA_leftist_rhetoric_fascism
 				}
 			}
+			if = {
+				limit = { 
+					has_idea = FRA_political_violence
+				}
+				FRA_right_wing_riot_effect = yes
+			}
 		}
 	}
 
-	focus = {
-		id = FRA_national_mobilization
-		icon = GFX_goal_generic_allies_build_infantry
+	focus = { # -----------------------------------------------
+		id = FRA_empower_the_syndicates
+		icon = GFX_focus_GER_the_peoples_victory
+	 	available = {
+
+		}
+	 	prerequisite = { focus = FRA_leftist_rhetoric }
+		x = -1
+		y = 1
+		relative_position_id = FRA_leftist_rhetoric
+		cost = 7.5
+
+		available_if_capitulated = yes
+
+
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.10
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = FRA_general_collectivization
+		icon = GFX_focus_generic_communist
+	 	available = {
+			communism > 0.25
+		}
+	 	prerequisite = { focus = FRA_leftist_rhetoric }
+		x = 1
+		y = 1
+		relative_position_id = FRA_leftist_rhetoric
+		cost = 7.5
+
+		available_if_capitulated = yes
+
+
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_timed_idea = {
+				idea = FRA_general_collectivization
+				days = 1095
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = FRA_the_commune_proclamation
+		icon = GFX_focus_generic_social_democracy
 	 	available = {
 	 		OR = {
 	 			has_government = communism
-	 			communism > 0.4
+	 			communism > 0.45
 	 		}
 		}
-	 	prerequisite = { focus = FRA_leftist_rhetoric }
+	 	prerequisite = { focus = FRA_empower_the_syndicates }
+		prerequisite = { focus = FRA_general_collectivization }
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = FRA_leftist_rhetoric
 		cost = 10
 
@@ -8684,10 +8769,75 @@
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			remove_ideas = FRA_disjointed_government
+			set_politics = { ruling_party = communism }
+			if = {
+				limit = {
+					has_idea = FRA_disjointed_government
+				}
+				remove_ideas = FRA_disjointed_government
+			}
+			hidden_effect = {
+				news_event = { id = lar_news.9 days = 3 random_days = 5 }
+			}
+			if = {
+				limit = {
+					has_idea = FRA_political_violence
+				}
+				country_event = lar_france_political_violence.3
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_national_mobilization
+		icon = GFX_focus_GER_liberate_exploited_colonial_workers
+	 	available = {
+	 		OR = {
+	 			has_government = communism
+	 			communism > 0.55
+	 		}
+		}
+	 	prerequisite = { focus = FRA_the_commune_proclamation }
+		x = 0
+		y = 1
+		relative_position_id = FRA_the_commune_proclamation
+		cost = 5
+
+		available_if_capitulated = yes
+
+
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
 			add_ideas = FRA_national_mobilization_focus
 		}
 	}
+
+	focus = {
+		id = FRA_humanite_unie
+		icon = GFX_goal_generic_dangerous_deal
+		mutually_exclusive = { focus = FRA_join_comintern }
+	 	available = {
+	 		is_puppet = no
+		}
+	 	prerequisite = { focus = FRA_the_commune_proclamation }
+		x = -1
+		y = 2
+		relative_position_id = FRA_the_commune_proclamation
+		cost = 10
+
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+		}
+	}	
 
 	focus = {
 		id = FRA_join_comintern
@@ -8707,13 +8857,13 @@
  				is_faction_leader = yes
  			}
 		}
-	 	prerequisite = { focus = FRA_national_mobilization }
+	 	prerequisite = { focus = FRA_the_commune_proclamation }
 	 	bypass = {
 	 		is_in_faction_with = SOV
 	 	}
 		x = 1
-		y = 1
-		relative_position_id = FRA_national_mobilization
+		y = 2
+		relative_position_id = FRA_the_commune_proclamation
 		cost = 10
 
 		available_if_capitulated = yes
@@ -8724,30 +8874,6 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			SOV = { country_event = { id = soviet.29 days = 1 } }
-		}
-	}	
-
-	focus = {
-		id = FRA_humanite_unie
-		icon = GFX_goal_generic_dangerous_deal
-		mutually_exclusive = { focus = FRA_join_comintern }
-	 	available = {
-	 		is_puppet = no
-		}
-	 	prerequisite = { focus = FRA_national_mobilization }
-		x = -1
-		y = 1
-		relative_position_id = FRA_national_mobilization
-		cost = 10
-
-		available_if_capitulated = yes
-
-		ai_will_do = {
-			factor = 1
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			set_rule = { can_create_factions = yes }
 		}
 	}	
 
@@ -11737,12 +11863,12 @@
 
 	focus = {
 		id = FRA_right_wing_rhetoric
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_focus_generic_fascist_propaganda
 	 	prerequisite = { focus = FRA_revive_the_national_bloc }
-		x = 7
+		x = 8
 		y = 1
 		relative_position_id = FRA_revive_the_national_bloc
-		cost = 10
+		cost = 7.5
 
 		available_if_capitulated = yes
 		allow_branch = {
@@ -11794,13 +11920,19 @@
 					target = ROOT 
 					modifier = FRA_right_wing_rhetoric_communism
 				}
-			}			
+			}		
+			if = {
+				limit = { 
+					has_idea = FRA_political_violence
+				}
+				FRA_right_wing_riot_effect = yes
+			}	
 		}
 	}
 	
 	focus = {
 		id = FRA_army_of_aggression
-		icon = GFX_goal_generic_occupy_states_ongoing_war
+		icon = GFX_focus_generic_full_social_mobilization
 	 	available = {
 	 		OR = {
 	 			has_government = fascism
@@ -11861,7 +11993,7 @@
 
 	focus = {
 		id = FRA_woo_italy
-		icon = GFX_goal_tripartite_pact
+		icon = GFX_focus_generic_italy_first
 	 	mutually_exclusive = { focus = FRA_join_germany focus = FRA_france_first}
 	 	available = {
 	 		is_puppet = no
@@ -12107,44 +12239,6 @@
 	}
 
 	focus = {
-		id = FRA_dismantle_the_democracies
-		icon = GFX_goal_generic_major_war
-	 	available = {
-	 		is_puppet = no
-	 		GER = { has_government = democratic }
-		}
-	 	prerequisite = { focus = FRA_woo_italy }
-	 	will_lead_to_war_with = GER
-		x = 0
-		y = 1
-		relative_position_id = FRA_woo_italy
-		cost = 10
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				date < 1940.1.1
-			}
-			modifier = {
-				factor = 0
-				NOT = { GER = { has_completed_focus = GER_central_european_alliance } }
-			}
-			modifier = {
-				factor = 200
-				GER = { has_war_with = SOV }
-			}
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = GER
-				expire = 0
-			}
-		}
-	}
-
-	focus = {
 		id = FRA_join_germany
 		icon = GFX_goal_support_fascism
 	 	mutually_exclusive = { focus = FRA_woo_italy focus = FRA_france_first}
@@ -12178,6 +12272,199 @@
 		completion_reward = {
 			### EVENT ASKING GERMANY TO JOIN FACTION
 			GER = { country_event = { id = germany.91 days = 1 } }			
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = FRA_crush_communism
+		icon = GFX_focus_spr_crush_the_revolution
+	 	available = {
+	 		is_puppet = no
+			OR = {
+				ENG = { 
+					has_government = communism
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				GER = { 
+					has_government = communism
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				ITA = { 
+					has_government = communism
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				SOV = { 
+					has_government = communism
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+			}
+		}
+	 	prerequisite = { 
+			focus = FRA_france_first
+			focus = FRA_woo_italy 
+			focus = FRA_join_germany
+		}
+		x = -1
+		y = 1
+		relative_position_id = FRA_woo_italy
+		cost = 10
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < 1940.1.1
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = { 
+					ENG = {
+						has_government = communism
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ENG
+					expire = 0
+				}
+			}
+			if = {
+				limit = { 
+					GER = {
+						has_government = communism
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = GER
+					expire = 0
+				}
+			}
+			if = {
+				limit = { 
+					ITA = {
+						has_government = communism
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ITA
+					expire = 0
+				}
+			}
+			if = {
+				limit = { 
+					SOV = {
+						has_government = communism
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = SOV
+					expire = 0
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_dismantle_the_democracies
+		icon = GFX_focus_generic_strike_at_democracy1
+	 	available = {
+	 		is_puppet = no
+			OR = {
+				ENG = { 
+					has_government = democratic 
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				GER = { 
+					has_government = democratic 
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				ITA = { 
+					has_government = democratic 
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+			}
+		}
+	 	prerequisite = { 
+			focus = FRA_france_first
+			focus = FRA_woo_italy 
+			focus = FRA_join_germany
+		}
+	 	will_lead_to_war_with = GER
+		x = 1
+		y = 1
+		relative_position_id = FRA_woo_italy
+		cost = 10
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < 1940.1.1
+			}
+			modifier = {
+				factor = 0
+				NOT = { GER = { has_completed_focus = GER_central_european_alliance } }
+			}
+			modifier = {
+				factor = 200
+				GER = { has_war_with = SOV }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = { 
+					ENG = {
+						has_government = democratic
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ENG
+					expire = 0
+				}
+			}
+			if = {
+				limit = { 
+					GER = {
+						has_government = democratic
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = GER
+					expire = 0
+				}
+			}
+			if = {
+				limit = { 
+					ITA = {
+						has_government = democratic
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ITA
+					expire = 0
+				}
+			}
 		}
 	}
 
