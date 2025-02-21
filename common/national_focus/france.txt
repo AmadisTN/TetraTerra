@@ -4503,6 +4503,10 @@
 				remove_idea = FRA_inefficient_economy_2
 				add_idea = FRA_inefficient_economy_1
 			}
+			add_timed_idea = {
+				idea = FRA_recent_nationalized_industry
+				days = 730
+			}
 		}
 	}
 
@@ -4561,8 +4565,15 @@
 			unlock_decision_tooltip = { decision = FRA_reorganize_aviation_industry_center show_effect_tooltip = no }
 			unlock_decision_tooltip = { decision = FRA_reorganize_aviation_industry_south_east show_effect_tooltip = no }
 			unlock_decision_tooltip = { decision = FRA_reorganize_aviation_industry_south_west show_effect_tooltip = no }
-		}
 
+			if = {
+				limit = { has_idea = FRA_recent_nationalized_industry }
+				modify_timed_idea = {
+					idea = FRA_recent_nationalized_industry
+					days = -182.5
+				}
+			}
+		}
 	}
 
 	focus = { # ----------------------------------------------------
@@ -4680,6 +4691,14 @@
 				}
 
 			}
+
+			if = {
+				limit = { has_idea = FRA_recent_nationalized_industry }
+				modify_timed_idea = {
+					idea = FRA_recent_nationalized_industry
+					days = 182.5
+				}
+			}
 		}
 	}
 
@@ -4730,6 +4749,32 @@
 				}
 				remove_ideas = { FRA_inefficient_economy_2 }
 			}
+
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			if = {
+				limit = { has_idea = FRA_recent_nationalized_industry }
+				modify_timed_idea = {
+					idea = FRA_recent_nationalized_industry
+					days = -182.5
+				}
+			}
 		}
 	}
 
@@ -4762,7 +4807,74 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			army_experience = 5
+			navy_experience = 5
+			air_experience = 5
+			add_command_power = 12
 			add_ideas = { FRA_dirigisme }
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = FRA_nationalized_acres
+		icon = GFX_focus_generic_the_giant_wakes
+		x = 1
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_general_work_council
+		}
+		relative_position_id = FRA_general_work_council
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					state_population > 500000
+					state_population < 1500000
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -4776,7 +4888,7 @@
 			focus = FRA_general_work_council
 		}
 		relative_position_id = FRA_general_work_council
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -4805,10 +4917,27 @@
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -4846,21 +4975,12 @@
 					instant_build = yes
 				}
 			}
-			random_owned_state = {
-				limit = {
-					is_controlled_by = ROOT
-					is_core_of = ROOT
-					free_building_slots = {
-						building = arms_factory
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
+
+			if = {
+				limit = { has_idea = FRA_recent_nationalized_industry }
+				modify_timed_idea = {
+					idea = FRA_recent_nationalized_industry
+					days = -182.5
 				}
 			}
 		}
@@ -5767,10 +5887,10 @@
 		completion_reward = {
 			if = {
 				limit = {
-					has_idea = FRA_disjointed_government
+					has_idea = FRA_disjointed_government_start
 				}
 				swap_ideas = {
-					remove_idea = FRA_disjointed_government
+					remove_idea = FRA_disjointed_government_start
 					add_idea = FRA_disjointed_government_liberte
 				}
 			} else_if = {
@@ -5846,10 +5966,10 @@
 		completion_reward = {
 			if = {
 				limit = {
-					has_idea = FRA_disjointed_government
+					has_idea = FRA_disjointed_government_start
 				}
 				swap_ideas = {
-					remove_idea = FRA_disjointed_government
+					remove_idea = FRA_disjointed_government_start
 					add_idea = FRA_disjointed_government_egalite
 				}
 			} else_if = {
@@ -5934,10 +6054,10 @@
 		completion_reward = {
 			if = {
 				limit = {
-					has_idea = FRA_disjointed_government
+					has_idea = FRA_disjointed_government_start
 				}
 				swap_ideas = {
-					remove_idea = FRA_disjointed_government
+					remove_idea = FRA_disjointed_government_start
 					add_idea = FRA_disjointed_government_fraternite
 				}
 			} else_if = {
@@ -6056,20 +6176,10 @@
 				popularity = 0.02
 			}
 
-			if = {
-				limit = {
-					has_subject = yes
-				}
-				every_country = {
-					if = {
-						limit = { 
-							is_subject_of = ROOT
-						}
-						add_popularity = {
-							ideology = democratic
-							popularity = 0.05
-						}
-					}
+			every_subject_country = {
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.05
 				}
 			}
 
@@ -8224,12 +8334,13 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			
 			add_country_leader_trait = anti_german_personality
 		}
 	}
 
 	focus = { # -------------------------------------------
-		id = FRA_block_influence_in_scandinavia
+		id = FRA_pressure_norway_and_sweden
 		icon = GFX_focus_generic_scandinavia_flags
 		x = 0
 		y = 2
@@ -8237,7 +8348,7 @@
 			focus = FRA_go_with_britain
 		}
 		relative_position_id = FRA_go_with_britain
-		cost = 2.5
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -9712,7 +9823,7 @@
 			}
 
 			swap_ideas = {
-				remove_idea = FRA_disjointed_government
+				remove_idea = FRA_disjointed_government_start
 				add_idea = FRA_disjointed_government_fascist
 			}
 		}
@@ -9979,7 +10090,17 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
-			remove_ideas = { FRA_disjointed_government }
+			if = {
+				limit = {
+					has_idea = FRA_disjointed_government_start
+				}
+				remove_ideas = { FRA_disjointed_government_start }
+			} else_if = {
+				limit = { 
+					has_idea = FRA_disjointed_government_fascist
+				}
+				remove_ideas = { FRA_disjointed_government_fascist }
+			}
 			add_popularity = { ideology = fascism popularity = party_popularity@neutrality }
 			add_popularity = { ideology = neutrality popularity = -1}
 		}
@@ -10458,7 +10579,7 @@
 	}
 
 	focus = { # -----------------------------------------------
-		id = FRA_invite_romania
+		id = FRA_invite_romania_fascist
 		icon = GFX_focus_invite_romania
 		x = -2
 		y = 1

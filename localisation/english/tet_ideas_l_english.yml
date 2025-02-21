@@ -10,6 +10,9 @@ FRA_victors_of_wwi_new_way_desc: ""
 FRA_strengthen_government_support_idea: "Strengthen Government Support"
 FRA_strengthen_government_support_idea_desc: ""
 
+FRA_disjointed_government_start: "Disjointed Government"
+FRA_disjointed_government_start_desc: ""
+
 FRA_disjointed_government_liberte: "Disjointed Government"
 FRA_disjointed_government_liberte_desc: ""
 
@@ -47,6 +50,9 @@ FRA_matignon_agreements_communist: "Matignon Agreements"
 FRA_matignon_agreements_communist_desc: ""
 
 # France Enonomy:
+FRA_recent_nationalized_industry: "Recent Nationalized Industry"
+FRA_recent_nationalized_industry_desc: ""
+
 FRA_french_craftsmanship: "French Craftsmanship"
 FRA_french_craftsmanship_desc: ""
 

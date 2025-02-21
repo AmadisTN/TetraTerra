@@ -147,7 +147,7 @@ ideas = {
 			}
 	    }
 
-		FRA_disjointed_government = {
+		FRA_disjointed_government_start = {
 			
 			allowed = {
 				original_tag = FRA
@@ -471,6 +471,22 @@ ideas = {
 			modifier = {
 				weekly_manpower = 500
 				neutrality_drift = 0.01
+			}
+		}
+
+		FRA_recent_nationalized_industry = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_factory_efficiency_gain_factor = -0.15
+				production_factory_max_efficiency_factor  = 0.05
 			}
 		}
 
