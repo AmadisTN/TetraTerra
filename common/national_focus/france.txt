@@ -2969,7 +2969,7 @@
 		id = FRA_protect_freedom_of_speech
 		icon = GFX_focus_spr_torchbearers_of_tomorrow
 		x = -2
-		y = 1
+		y = 2
 		
 		prerequisite = {
 			focus = FRA_national_referendum
@@ -3013,15 +3013,15 @@
 	focus = { # ----------------------------------------------------
 		id = FRA_socialist_democracy
 		icon = GFX_focus_CHL_union_of_hispanic_republics
-		x = 0
+		x = -1
 		y = 1
 		
 		prerequisite = {
 			focus = FRA_protect_freedom_of_speech
 		}
-		prerequisite = {
-			focus = FRA_reconciliation
-		}
+		# prerequisite = {
+		# 	focus = FRA_reconciliation
+		# }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		relative_position_id = FRA_protect_freedom_of_speech
 		cost = 2.5
@@ -3031,7 +3031,7 @@
 		}
 
 		available = {
-			
+			has_completed_focus = FRA_constitutional_convention
 		}
 		
 		bypass = {
@@ -4817,7 +4817,7 @@
 
 	focus = { # -----------------------------------------------
 		id = FRA_nationalized_acres
-		icon = GFX_focus_generic_the_giant_wakes
+		icon = GFX_focus_generic_land_reclamation
 		x = 1
 		y = 1
 		
@@ -4844,6 +4844,7 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			add_political_power = 15
 			every_owned_state = {
 				limit = {
 					is_controlled_by = ROOT
@@ -11436,8 +11437,8 @@
 	}
 
 	focus = { # ----------------------------------------------------
-		id = FRA_the_french_people
-		icon = GFX_goal_generic_national_unity
+		id = FRA_la_france_aux_francais
+		icon = GFX_focus_generic_blue_flags
 		x = 0
 		y = 3
 		
@@ -11446,7 +11447,7 @@
 			focus = FRA_demand_the_romandie
 		}
 		relative_position_id = FRA_split_belgium
-		cost = 5
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -12591,7 +12592,7 @@
 
 	focus = {
 		id = FRA_the_council_of_rambouillet
-		icon = GFX_goal_generic_major_alliance
+		icon = GFX_focus_generic_monarchy_2
 		x = 18
 		y = 1
 		
@@ -12841,11 +12842,12 @@
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_stability = 0.1
+			add_war_support = 0.05
 		}
 	}
 	focus = {
 		id = FRA_the_first_citizen_of_the_state
-		icon = GFX_focus_generic_military_mission
+		icon = GFX_focus_generic_monarchist_workers
 		x = 1
 		y = 1
 		
@@ -12910,9 +12912,9 @@
 	}
 	focus = {
 		id = FRA_no_further_humiliations
-		icon = GFX_focus_generic_support_the_left_right
-		x = -2
-		y = 1
+		icon = GFX_focus_generic_heavy_tank
+		x = 0
+		y = 2
 		
 		prerequisite = {
 			focus = FRA_counter_action
@@ -12971,15 +12973,15 @@
 	}
 	focus = {
 		id = FRA_slum_clearing
-		icon = GFX_goal_generic_construction
-		x = 0
+		icon = GFX_focus_ITA_grande_rivolta_rurale
+		x = -1
 		y = 1
 		
 		prerequisite = {
 			focus = FRA_counter_action
 		}
 		relative_position_id = FRA_counter_action
-		cost = 5
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -12998,6 +13000,8 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			add_political_power = 25
+			add_war_support = 0.05
 			every_owned_state = {
 				limit = { 
 					is_core_of = ROOT 
@@ -13015,13 +13019,13 @@
 		id = FRA_public_welfare
 		icon = GFX_goal_generic_consumer_goods
 		x = 0
-		y = 1
+		y = 2
 		
 		prerequisite = {
 			focus = FRA_slum_clearing
 		}
 		relative_position_id = FRA_slum_clearing
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -13040,6 +13044,7 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
+			add_political_power = 50
 			add_stability = 0.1
 		}
 	}
@@ -13116,15 +13121,15 @@
 	}
 	focus = {
 		id = FRA_secure_the_crown_of_spain
-		icon = GFX_goal_generic_position_armies
+		icon = GFX_focus_RAJ_kingmaker
 		x = 0
-		y = 1
+		y = 2
 		
 		prerequisite = {
 			focus = FRA_the_legitimate_heir
 		}
 		relative_position_id = FRA_the_legitimate_heir
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -13173,7 +13178,7 @@
 	}
 	focus = {
 		id = FRA_unite_the_crowns
-		icon = GFX_goal_generic_demand_territory
+		icon = GFX_focus_CHL_invite_french_aristocracy
 		x = -1
 		y = 1
 		
@@ -13236,13 +13241,13 @@
 				}
 				add_core_of = ROOT
 			}
-			add_stability = -0.1
+			add_stability = -0.10
 			set_cosmetic_tag = FRANCO_SPAIN
 		}
 	}
 	focus = {
 		id = FRA_two_countries_two_crowns
-		icon = GFX_goal_tripartite_pact
+		icon = GFX_focus_generic_royal_wedding
 		x = 1
 		y = 1
 		
@@ -13369,7 +13374,7 @@
 	focus = {
 		id = FRA_avenge_waterloo #you now have ABBA stuck in your head for the rest of the day
 		icon = GFX_focus_attack_britain
-		x = 0
+		x = 1
 		y = 1
 		
 		prerequisite = {
@@ -13444,17 +13449,74 @@
 			}
 		}
 	}
-	focus = {
-		id = FRA_reorganize_the_dutch
-		icon = GFX_focus_CZE_german_puppet
-		x = 2
+
+	focus = { # --------------------------------------------
+		id = FRA_reorganize_belgium
+		icon = GFX_focus_BEL_royal_commander_in_chief
+		x = -1
 		y = 1
 		
 		prerequisite = {
 			focus = FRA_avenge_waterloo
 		}
 		relative_position_id = FRA_avenge_waterloo
-		cost = 10
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject = no
+			OR = {
+				BEL = {
+					is_subject_of = ROOT
+				}
+				any_state = {
+					is_core_of = BEL
+					is_controlled_by = ROOT
+				}
+				LUX = {
+					is_subject_of = ROOT
+				}
+				any_state = {
+					is_core_of = LUX
+					is_controlled_by = ROOT
+				}
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_relation_modifier = {
+				target = BEL
+				modifier = FRA_reorganized_departments
+			}
+			add_relation_modifier = {
+				target = LUX
+				modifier = FRA_reorganized_departments
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_reorganize_the_dutch
+		icon = GFX_focus_hol_gateway_to_europe
+		x = 0
+		y = 2
+		
+		prerequisite = {
+			focus = FRA_avenge_waterloo
+		}
+		relative_position_id = FRA_avenge_waterloo
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -13488,18 +13550,19 @@
 			}
 		}
 	}
-	focus = {
-		id = FRA_retribution_for_sedan
-		icon = GFX_focus_attack_germany
-		x = 0
+
+	focus = { # --------------------------------------------
+		id = FRA_reclaim_rome
+		icon = GFX_focus_attack_italy
+		x = 1
 		y = 1
 		
 		prerequisite = {
 			focus = FRA_avenge_waterloo
 		}
 		relative_position_id = FRA_avenge_waterloo
-		cost = 10
-		will_lead_to_war_with = GER
+		cost = 7.5
+		will_lead_to_war_with = ITA
 		ai_will_do = {
 			factor = 1
 		}
@@ -13510,8 +13573,8 @@
 		
 		bypass = {
 			OR = {
-				is_in_faction_with = GER
-				has_war_with = GER
+				is_in_faction_with = ITA
+				has_war_with = ITA
 
 			}
 		}
@@ -13521,24 +13584,25 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			create_wargoal = { 
+			create_wargoal = {
 				type = annex_everything
-				target = GER
+				target = ITA
 				expire = 0
 			}
 		}
 	}
-	focus = {
-		id = FRA_disunite_germany
+
+	focus = { # --------------------------------------------
+		id = FRA_disunite_italy
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		x = 2
-		y = 1
+		x = 0
+		y = 2
 		
 		prerequisite = {
-			focus = FRA_retribution_for_sedan
+			focus = FRA_reclaim_rome
 		}
-		relative_position_id = FRA_retribution_for_sedan
-		cost = 10
+		relative_position_id = FRA_reclaim_rome
+		cost = 15
 
 		ai_will_do = {
 			factor = 1
@@ -13548,10 +13612,10 @@
 			is_subject = no
 			is_faction_leader = yes
 			any_state = { 
-				is_core_of = GER
+				is_core_of = ITA
 				is_controlled_by = ROOT
 			}
-			GER = {
+			ITA = {
 				OR = {
 					exists = no
 					has_capitulated = yes
@@ -13581,7 +13645,12 @@
 			if = {
 				limit = {
 					51 = {
-						is_controlled_by = ROOT
+						OR = {
+							is_controlled_by = ROOT
+							controller = {
+								is_subject_of = ROOT
+							}
+						}
 					}
 				}
 				transfer_state = 51
@@ -13589,7 +13658,12 @@
 			if = {
 				limit = {
 					42 = {
-						is_controlled_by = ROOT
+						OR = {
+							is_controlled_by = ROOT
+							controller = {
+								is_subject_of = ROOT
+							}
+						}
 					}
 				}
 				transfer_state = 42
@@ -13770,17 +13844,312 @@
 			}
 		}
 	}
+
 	focus = {
-		id = FRA_return_to_borodino
-		icon = GFX_focus_attack_soviet
-		x = 0
+		id = FRA_retribution_for_sedan
+		icon = GFX_focus_attack_germany
+		x = 3
 		y = 1
+		
+		prerequisite = {
+			focus = FRA_avenge_waterloo
+		}
+		relative_position_id = FRA_avenge_waterloo
+		cost = 7.5
+		will_lead_to_war_with = GER
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject = no
+		}
+		
+		bypass = {
+			OR = {
+				is_in_faction_with = GER
+				has_war_with = GER
+
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_wargoal = { 
+				type = annex_everything
+				target = GER
+				expire = 0
+			}
+		}
+	}
+	focus = {
+		id = FRA_disunite_germany
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		x = 0
+		y = 2
 		
 		prerequisite = {
 			focus = FRA_retribution_for_sedan
 		}
 		relative_position_id = FRA_retribution_for_sedan
-		cost = 10
+		cost = 15
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject = no
+			is_faction_leader = yes
+			any_state = { 
+				is_core_of = GER
+				is_controlled_by = ROOT
+			}
+			GER = {
+				OR = {
+					exists = no
+					has_capitulated = yes
+				}
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			IF = {
+				limit = {
+					is_in_faction = no
+				}
+				custom_effect_tooltip = FRA_disunite_germany_tt
+			}
+			ELSE = {
+				set_faction_name = FRA_confederation_of_the_rhine
+			}
+
+			if = {
+				limit = {
+					51 = {
+						OR = {
+							is_controlled_by = ROOT
+							controller = {
+								is_subject_of = ROOT
+							}
+						}
+					}
+				}
+				transfer_state = 51
+			}
+			if = {
+				limit = {
+					42 = {
+						OR = {
+							is_controlled_by = ROOT
+							controller = {
+								is_subject_of = ROOT
+							}
+						}
+					}
+				}
+				transfer_state = 42
+			}
+			if = {
+				limit = {
+					4 = { is_owned_or_subject_trigger = yes }
+					152 = { is_owned_or_subject_trigger = yes }
+					153 = { is_owned_or_subject_trigger = yes }
+					848 = { is_owned_or_subject_trigger = yes }
+					975 = { is_owned_or_subject_trigger = yes }
+					976 = { is_owned_or_subject_trigger = yes }
+				}
+				AUS = {
+					transfer_state = 4
+					transfer_state = 152
+					transfer_state = 153
+					transfer_state = 848
+					transfer_state = 975
+					transfer_state = 976  
+				}
+				puppet = AUS
+			}
+			if = { #set up Wurtemberg puppet
+				limit = {
+					50 = {
+						is_owned_or_subject_trigger = yes
+					}
+					978 = {
+						is_owned_or_subject_trigger = yes
+					}
+				}
+				WUR = {
+					transfer_state = 50
+					add_state_core = 50
+					transfer_state = 978 #BADEN -> BADEN-WURTTEMBERG
+					add_state_core = 978
+				}
+				puppet = WUR
+			}
+			if = { #set up Saxony puppet
+				limit = {
+					65 = {
+						is_owned_or_subject_trigger = yes
+					}
+				}
+				SAX = {
+					transfer_state = 65
+					add_state_core = 65
+				}
+				puppet = SAX
+			}
+			if = { #set up Mecklenburg puppet
+				limit = {
+					61 = {
+						is_owned_or_subject_trigger = yes
+					}
+				}
+				MEK = {
+					transfer_state = 61
+					add_state_core = 61
+				}
+				puppet = MEK
+			}
+			if = { #set up Schleswig-Holstein puppet
+				limit = {
+					58 = {
+						is_owned_or_subject_trigger = yes
+					}
+				}
+				SHL = {
+					transfer_state = 58
+					add_state_core = 58
+					transfer_state = 909 #New state of SCHLESWIG
+					add_state_core = 909 #New state of SCHLESWIG
+				}
+				puppet = SHL
+			}
+			if = { #set up Bavaria puppet
+				limit = {
+					52 = {
+						is_owned_or_subject_trigger = yes
+					}
+					53 = {
+						is_owned_or_subject_trigger = yes
+					}
+					54 = {
+						is_owned_or_subject_trigger = yes
+					}
+				}
+				BAY = {
+					transfer_state = 52
+					transfer_state = 53
+					transfer_state = 54
+					add_state_core = 52
+					add_state_core = 53
+					add_state_core = 54
+				}
+				puppet = BAY
+			}
+			if = { #set up Hanover puppet
+				limit = {
+					59 = {
+						is_owned_or_subject_trigger = yes
+					}
+					56 = {
+						is_owned_or_subject_trigger = yes
+					}
+					57 = {
+						is_owned_or_subject_trigger = yes
+					}
+				}
+				HAN = {
+					transfer_state = 59
+					transfer_state = 56
+					transfer_state = 57
+					add_state_core = 59
+					add_state_core = 56
+					add_state_core = 57
+				}
+				puppet = HAN
+			}
+			if = {
+				limit = {
+					CZE = { exists = yes }
+					NOT = { has_war_with = CZE }
+				}
+				every_state = {
+					limit = { 
+						is_core_of = CZE 
+						is_owned_or_subject_trigger = yes
+					}
+					CZE = { transfer_state = PREV }
+				}
+			}
+			else = {
+				every_state = {
+					limit = { 
+						is_core_of = CZE 
+						is_owned_or_subject_trigger = yes
+					}
+					CZE = { transfer_state = PREV }
+				}
+				puppet = CZE
+			}
+			every_state = {
+				limit = { 
+					is_core_of = GER 
+					is_owned_or_subject_trigger = yes
+					CONTROLLER = {
+						NOT = {
+							OR = {
+								tag = BAY
+								tag = MEK
+								tag = SAX
+								tag = HAN
+								tag = SHL
+								tag = WUR
+								tag = CZE
+							}
+						}
+					}
+					NOT = {
+						state = 42 #MOSELLAND
+						state = 51
+					}
+				}
+				PRE = {
+					transfer_state = PREV
+					add_state_core = PREV
+				}
+			}
+			if = {
+				limit = {
+					country_exists = PRE
+				}
+				puppet = PRE
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_return_to_borodino
+		icon = GFX_focus_attack_soviet
+		x = 1
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_reclaim_rome
+			focus = FRA_retribution_for_sedan
+		}
+		relative_position_id = FRA_reclaim_rome
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -13810,7 +14179,7 @@
 		id = FRA_je_suis_la_deluge
 		icon = GFX_focus_fra_le_deluge
 		x = 0
-		y = 1
+		y = 2
 		
 		prerequisite = {
 			focus = FRA_return_to_borodino
@@ -14443,7 +14812,7 @@
 	}
 	focus = {
 		id = FRA_improved_screen_ships
-		icon = GFX_focus_ITA_workers_unions
+		icon = GFX_focus_generic_cruiser2
 	 	prerequisite = { focus = FRA_surface_combat }
 	 	prerequisite = { focus = FRA_undersea_combat }
 		x = -1
