@@ -907,5 +907,132 @@ ideas = {
 				#industrial_capacity_dockyard = 0.075
 			}
 		}
+
+		# ------------------------------------------ Monarchy :
+		FRA_Grande_armee = { # Napoleon
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.015
+				conscription_factor = 0.25
+				war_support_factor = 0.025
+			}
+		}
+
+		FRA_Grande_armee_1 = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.015
+				non_core_manpower = 0.025
+				conscription_factor = 0.25
+				war_support_factor = 0.05
+			}
+		}
+
+		FRA_Grande_armee_2 = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.015
+				non_core_manpower = 0.05
+				conscription_factor = 0.25
+				war_support_factor = 0.05
+			}
+		}
+
+		FRA_Grande_armee_3 = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.015
+				non_core_manpower = 0.075
+				conscription_factor = 0.25
+				war_support_factor = 0.075
+			}
+		}
+
+		FRA_Grande_armee_4 = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.015
+				non_core_manpower = 0.1
+				conscription_factor = 0.25
+				war_support_factor = 0.1
+			}
+		}
+
+		FRA_la_deluge = {
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				breakthrough_factor = 0.1
+				army_speed_factor = 0.1
+				army_defence_factor = -0.1
+				training_time_army_factor = -0.2
+				justify_war_goal_time = -0.25
+			}
+		}
 	}
 }

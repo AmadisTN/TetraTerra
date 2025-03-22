@@ -13371,9 +13371,10 @@
 			set_cosmetic_tag = FRA_THIRD_EMPIRE
 		}
 	}
-	focus = {
-		id = FRA_avenge_waterloo #you now have ABBA stuck in your head for the rest of the day
-		icon = GFX_focus_attack_britain
+
+	focus = { # --------------------------------------------
+		id = FRA_revive_the_Grande_armee
+		icon = GFX_focus_generic_army_doctrines_2
 		x = 1
 		y = 1
 		
@@ -13381,6 +13382,39 @@
 			focus = FRA_proclaim_the_third_empire
 		}
 		relative_position_id = FRA_proclaim_the_third_empire
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject = no
+		}
+		
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = FRA_Grande_armee
+		}
+	}
+
+	focus = {
+		id = FRA_avenge_waterloo #you now have ABBA stuck in your head for the rest of the day
+		icon = GFX_focus_attack_britain
+		x = 1
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_revive_the_Grande_armee
+		}
+		relative_position_id = FRA_revive_the_Grande_armee
 		cost = 10
 
 		ai_will_do = {
@@ -13420,6 +13454,7 @@
 					is_subject_of = ROOT
 				}
 			}
+			
 		}
 
 		cancel_if_invalid = yes
@@ -13452,7 +13487,7 @@
 
 	focus = { # --------------------------------------------
 		id = FRA_reorganize_belgium
-		icon = GFX_focus_BEL_royal_commander_in_chief
+		icon = GFX_focus_BEL_our_southern_neighbour
 		x = -1
 		y = 1
 		
@@ -13495,6 +13530,9 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			add_state_claim = 34
+			add_state_claim = 980
+			add_state_claim = 8
 			add_relation_modifier = {
 				target = BEL
 				modifier = FRA_reorganized_departments
@@ -13502,6 +13540,31 @@
 			add_relation_modifier = {
 				target = LUX
 				modifier = FRA_reorganized_departments
+			}
+			if = {
+				limit = { has_idea = FRA_Grande_armee }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee
+					add_idea = FRA_Grande_armee_1
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_1 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_1
+					add_idea = FRA_Grande_armee_2
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_2 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_2
+					add_idea = FRA_Grande_armee_3
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_3 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_3
+					add_idea = FRA_Grande_armee_4
+				}
 			}
 		}
 	}
@@ -13566,11 +13629,39 @@
 					transfer_state = 7
 					transfer_state = 36
 				}
-				autonomy_integrated_puppet = HOL
+				set_autonomy = {
+					target = HOL
+					autonomy_state = autonomy_integrated_puppet
+				}
 			}
 			add_relation_modifier = {
 				target = HOL
 				modifier = FRA_reorganized_departments
+			}
+			if = {
+				limit = { has_idea = FRA_Grande_armee }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee
+					add_idea = FRA_Grande_armee_1
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_1 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_1
+					add_idea = FRA_Grande_armee_2
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_2 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_2
+					add_idea = FRA_Grande_armee_3
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_3 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_3
+					add_idea = FRA_Grande_armee_4
+				}
 			}
 		}
 	}
@@ -13765,7 +13856,7 @@
 				}
 			}
 			every_state = {
-				limit = { 
+				limit = { # Give it all to Papal States
 					is_core_of = ITA
 					is_owned_or_subject_trigger = yes
 					CONTROLLER = {
@@ -13788,21 +13879,58 @@
 					add_state_core = PREV
 				}
 			}
-			if = {
+			if = { # Give all non core to ROOT
 				limit = {
-					PAP = {
-						exists = yes
-						is_puppet_of = ROOT
-					}
 					ITA = {
 						exists = yes
 						is_puppet_of = ROOT
 					}
 				}
-				PAP = {
-					annex_country = {
-						target = ITA
+				every_state = {
+					limit = {
+						NOT = {
+							is_core_of = ITA
+						}
+						is_owned_or_subject_trigger = yes
+						CONTROLLER = {
+							OR = {
+								tag = TOS
+								tag = PAP
+								tag = TTS
+								tag = LBV
+								tag = ITA
+							}
+						}
 					}
+					ROOT = {
+						transfer_state = PREV
+					}
+				}
+			}
+
+			if = { # modify Grande Armee
+				limit = { has_idea = FRA_Grande_armee }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee
+					add_idea = FRA_Grande_armee_1
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_1 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_1
+					add_idea = FRA_Grande_armee_2
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_2 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_2
+					add_idea = FRA_Grande_armee_3
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_3 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_3
+					add_idea = FRA_Grande_armee_4
 				}
 			}
 		}
@@ -14094,10 +14222,15 @@
 							state = 51
 						}
 					}
+					ROOT = {
+						puppet = PRE
+					}
 					PRE = {
 						transfer_state = PREV
 						add_state_core = PREV
 					}
+					42 = { remove_core_of = PRE }
+					51 = { remove_core_of = PRE }
 				}
 				if = {
 					limit = {
@@ -14110,7 +14243,32 @@
 							target = GER
 						}
 					}
-					puppet = PRE
+				}
+			}
+
+			if = { # modify Grande Armee
+				limit = { has_idea = FRA_Grande_armee }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee
+					add_idea = FRA_Grande_armee_1
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_1 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_1
+					add_idea = FRA_Grande_armee_2
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_2 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_2
+					add_idea = FRA_Grande_armee_3
+				}
+			} else_if = {
+				limit = { has_idea = FRA_Grande_armee_3 }
+				swap_ideas = {
+					remove_idea = FRA_Grande_armee_3
+					add_idea = FRA_Grande_armee_4
 				}
 			}
 		}
