@@ -909,6 +909,24 @@ ideas = {
 		}
 
 		# ------------------------------------------ Monarchy :
+		FRA_christian_supporters = {
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.15
+				neutrality_drift = 0.05
+			}
+		}
+
 		FRA_Grande_armee = { # Napoleon
 			
 			allowed = {

@@ -5016,11 +5016,12 @@
 		available_if_capitulated = no
 		search_filters = {FOCUS_FILTER_FRA_POLITICAL_VIOLENCE }
 		completion_reward = {
-			remove_ideas = { FRA_political_violence }
 			set_temp_variable = { FRA_rw_support = party_popularity@neutrality }
 			add_to_temp_variable = { FRA_rw_support = party_popularity@fascism }
 			multiply_temp_variable = { FRA_rw_support = -0.5 }
 			add_stability = FRA_rw_support
+			custom_effect_tooltip = generic_skip_one_line_tt
+			remove_ideas = { FRA_political_violence }
 		}
 	}
 
@@ -5852,6 +5853,7 @@
 		prerequisite = {
 			focus = FRA_reform_the_labour_laws
 			focus = FRA_protect_the_rights_of_man
+			focus = FRA_state_protectionism
 		}
 		relative_position_id = FRA_reform_the_labour_laws
 		cost = 1
@@ -5940,6 +5942,7 @@
 		prerequisite = {
 			focus = FRA_reform_the_labour_laws
 			focus = FRA_protect_the_rights_of_man
+			focus = FRA_state_protectionism
 		}
 		relative_position_id = FRA_reform_the_labour_laws
 		cost = 1
@@ -6019,6 +6022,7 @@
 		prerequisite = {
 			focus = FRA_reform_the_labour_laws
 			focus = FRA_protect_the_rights_of_man
+			focus = FRA_state_protectionism
 		}
 		relative_position_id = FRA_reform_the_labour_laws
 		cost = 1
@@ -9181,64 +9185,14 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
-			add_political_power = 15
+			add_political_power = 50
 			add_popularity = {
 				ideology = democratic
 				popularity = 0.05
 			}
 		}
 	}
-	focus = {
-		id = FRA_freedom_front
-		icon = GFX_focus_focus_fra_national_resistance_council
-		x = -2
-		y = 2
-		
-		prerequisite = {
-			focus = FRA_protect_the_rights_of_man
-		}
-		prerequisite = {
-			focus = FRA_fraternite
-		}
-		relative_position_id = FRA_protect_the_rights_of_man
-		cost = 10
 
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			
-		}
-		
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			if = {
-				limit = {
-					not = { has_completed_focus = FRA_utilize_the_leagues }
-				}
-				set_temp_variable = { FRA_fascism = party_popularity@fascism }
-				add_popularity = { ideology = democratic popularity = FRA_fascism } 
-				multiply_temp_variable = { FRA_fascism = -1 }
-				add_popularity = { ideology = fascism popularity = FRA_fascism }
-			}
-			else = {
-				set_temp_variable = { FRA_democracy = party_popularity@democratic }
-				multiply_temp_variable = { FRA_democracy = 0.3 }
-				add_popularity = { ideology = fascism popularity = FRA_democracy } 
-				multiply_temp_variable = { FRA_democracy = -1 }
-				add_popularity = { ideology = democratic popularity = FRA_democracy }
-			}
-			FRA_communism_riot_effect = yes
-		}
-	}	
 	focus = {
 		id = FRA_stimulate_the_dynamic_market
 		icon = GFX_focus_generic_economic_recovery
@@ -9357,7 +9311,7 @@
 		}
 		mutually_exclusive = { focus = FRA_protect_the_rights_of_man }
 		relative_position_id = FRA_agricultural_protectionism
-		cost = 5
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -9377,23 +9331,21 @@
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_stability = 0.05
+			FRA_communism_riot_effect = yes
 		}
 	}
 
-	focus = { # ----------------------------------------------------
-		id = FRA_national_front
-		icon = GFX_focus_generic_fascist_troops
+	focus = {
+		id = FRA_freedom_front
+		icon = GFX_focus_focus_fra_national_resistance_council
 		x = 4
 		y = 1
 		
 		prerequisite = {
 			focus = FRA_state_protectionism
 		}
-		prerequisite = {
-			focus = FRA_national_regeneration
-		}
 		relative_position_id = FRA_state_protectionism
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -9585,7 +9537,7 @@
 		}
 
 		available = {
-			has_government = democratic
+
 		}
 		
 		bypass = {
@@ -9635,12 +9587,13 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_FRA_POLITICAL_VIOLENCE }
 		completion_reward = {
-			remove_ideas = FRA_political_violence
 			add_ideas = { FRA_communism_banned }
 			set_temp_variable = { communism_temp = party_popularity@communism }
 			multiply_temp_variable = { communism_temp = -0.25 }
 			add_stability = communism_temp
 			add_war_support = communism_temp
+			custom_effect_tooltip = generic_skip_one_line_tt
+			remove_ideas = FRA_political_violence
 		}
 	}	
 
@@ -9823,9 +9776,32 @@
 				}
 			}
 
-			swap_ideas = {
-				remove_idea = FRA_disjointed_government_start
-				add_idea = FRA_disjointed_government_fascist
+			if = {
+				limit = { 
+					has_idea = FRA_disjointed_government_start
+				}
+				swap_ideas = {
+					remove_idea = FRA_disjointed_government_start
+					add_idea = FRA_disjointed_government_fascist
+				}
+			}
+			else_if = {
+				limit = { 
+					has_idea = FRA_disjointed_government_egalite
+				}
+				swap_ideas = {
+					remove_idea = FRA_disjointed_government_egalite
+					add_idea = FRA_disjointed_government_fascist
+				}
+			}
+			else_if = {
+				limit = { 
+					has_idea = FRA_disjointed_government_only_communism
+				}
+				swap_ideas = {
+					remove_idea = FRA_disjointed_government_only_communism
+					add_idea = FRA_disjointed_government_fascist
+				}
 			}
 		}
 	}
@@ -10025,7 +10001,7 @@
 		y = 1
 		
 		prerequisite = {
-			focus = FRA_national_front
+			focus = FRA_freedom_front
 		}
 		prerequisite = {
 			focus = FRA_work
@@ -10092,10 +10068,25 @@
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			if = {
-				limit = {
+				limit = { 
 					has_idea = FRA_disjointed_government_start
 				}
 				remove_ideas = { FRA_disjointed_government_start }
+			} else_if = {
+				limit = { 
+					has_idea = FRA_disjointed_government_egalite
+				}
+				remove_ideas = { FRA_disjointed_government_egalite }
+			} else_if = {
+				limit = {
+					has_idea = FRA_disjointed_government_fraternite
+				}
+				remove_ideas = { FRA_disjointed_government_fraternite }
+			} else_if = {
+				limit = {
+					has_idea = FRA_disjointed_government_only_communism
+				}
+				remove_ideas = { FRA_disjointed_government_only_communism }
 			} else_if = {
 				limit = { 
 					has_idea = FRA_disjointed_government_fascist
@@ -12678,7 +12669,7 @@
 			focus = FRA_the_council_of_rambouillet
 		}
 		relative_position_id = FRA_the_council_of_rambouillet
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -12701,16 +12692,115 @@
 		}
 	}
 
-	focus = {
-		id = FRA_repeal_the_law_of_exile
-		icon = GFX_focus_renounce_the_treaty_of_trianon
-		x = 0
+	focus = { # --------------------------------------------
+		id = FRA_republican_protectionism
+		icon = GFX_focus_focus_fra_fascist_threat
+		x = -2
 		y = 1
 		
 		prerequisite = {
 			focus = FRA_revise_the_constitution
 		}
+		mutually_exclusive = {
+			focus = FRA_empower_the_absolutists
+		}
 		relative_position_id = FRA_revise_the_constitution
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject = no
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.026
+			modify_timed_idea = {
+				idea = FRA_constitutional_revision
+				days = -91.25
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.15
+			}
+		}
+	}
+
+	focus = { # --------------------------------------------
+		id = FRA_empower_the_absolutists
+		icon = GFX_focus_focus_fra_down_marianne
+		x = 2
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_revise_the_constitution
+		}
+		mutually_exclusive = {
+			focus = FRA_republican_protectionism
+		}
+		relative_position_id = FRA_revise_the_constitution
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject = no
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_war_support = 0.05
+			modify_timed_idea = {
+				idea = FRA_constitutional_revision
+				days = 91.25
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.15
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_repeal_the_law_of_exile
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		x = 2
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_republican_protectionism
+			focus = FRA_empower_the_absolutists
+		}
+		relative_position_id = FRA_republican_protectionism
 		cost = 10
 
 		ai_will_do = {
@@ -12732,7 +12822,76 @@
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_political_power = 120
-			remove_ideas = { FRA_disjointed_government }
+			if = {
+				limit = { 
+					has_idea = FRA_disjointed_government_start
+				}
+				remove_ideas = { FRA_disjointed_government_start }
+			}
+			else_if = {
+				limit = { 
+					has_idea = FRA_disjointed_government_egalite
+				}
+				remove_ideas = { FRA_disjointed_government_egalite }
+			}
+			else_if = {
+				limit = {
+					has_idea = FRA_disjointed_government_fraternite
+				}
+				remove_ideas = { FRA_disjointed_government_fraternite }
+			}
+			else_if = {
+				limit = {
+					has_idea = FRA_disjointed_government_only_communism
+				}
+				remove_ideas = { FRA_disjointed_government_only_communism }
+			}
+		}
+	}
+
+	focus = { # --------------------------------------------
+		id = FRA_rally_the_church
+		icon = GFX_focus_generic_vatican_state
+		x = 1
+		y = 1
+		
+		prerequisite = {
+			focus = FRA_empower_the_absolutists
+		}
+		relative_position_id = FRA_empower_the_absolutists
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			not = { has_idea = FRA_constitutional_revision }
+			is_subject = no
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_timed_idea = {
+				idea = FRA_christian_supporters
+				days = 365
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_temp_variable = { democ_christians = party_popularity@democratic }
+			multiply_temp_variable = {
+				democ_christians = -0.25
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = democ_christians
+			}
 		}
 	}
 
@@ -12742,6 +12901,9 @@
 		x = -3
 		y = 1
 		
+		prerequisite = {
+			focus = FRA_republican_protectionism
+		}
 		prerequisite = {
 			focus = FRA_repeal_the_law_of_exile
 		}
@@ -12800,6 +12962,7 @@
 				ideology = neutrality
 				long_name = FRA_orleanist_party_long
 				name = FRA_orleanist_party
+				
 			}
 			set_politics = { ruling_party = neutrality }
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -12908,6 +13071,13 @@
 
 		completion_reward = {
 			add_timed_idea = { idea = FRA_counter_action days = 730 }
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = {
+					has_idea = FRA_political_violence
+				}
+				remove_ideas = FRA_political_violence
+			}
 		}
 	}
 	focus = {
