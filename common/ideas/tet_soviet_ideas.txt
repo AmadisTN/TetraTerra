@@ -1,0 +1,24 @@
+ideas = {
+	country = {
+		SOV_unequal_multiethnic_union = {
+			picture = chi_war_of_resistance3
+			allowed = {
+				original_tag = SOV
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				non_core_manpower = 1.25
+				monthly_population = -0.15
+				mobilization_speed  = -0.15
+				experience_loss_factor = 0.25
+			}
+		}
+	}
+}
