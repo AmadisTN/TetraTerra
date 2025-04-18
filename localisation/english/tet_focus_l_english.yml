@@ -147,3 +147,14 @@ tet_france.1.t: "The 3 Patents"
 tet_france.1.d: ""
 tet_france.1.a: "Keep the patents secret!"
 tet_france.1.b: "Publish the patents!"
+
+
+
+# ---------------------------------------------- CHINA REP. :
+# ---------------------------------------------- China democracy :
+
+CHI_path_of_republicanism: "Path of Republicanism"
+CHI_path_of_republicanism_desc: "The journey started by Dr. Sun Yat-Sen must eventually lead to a republic. It will no doubt be a long journey, but we take it one step at a time."
+
+CHI_national_affairs: "National Affairs"
+CHI_national_affairs_desc: "The idea of belonging to a nation - rather than a tribe or a religion - is what turns a group of people into a state."

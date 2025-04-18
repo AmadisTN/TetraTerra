@@ -1,0 +1,22 @@
+ideas = {
+	country = {
+		CHI_three_principles_of_the_people_idea = {
+			#picture = POL_ideology_drift_defence
+			picture = generic_victors_of_ww1
+			allowed = {
+				original_tag = CHI
+				always = no
+			}
+	
+			allowed_civil_war = {
+				always = yes
+			}
+	
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = 0.05
+			}
+		}
+	}
+}
