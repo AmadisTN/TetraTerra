@@ -2842,7 +2842,7 @@ shared_focus = {
 
 shared_focus = {
 	id = CHI_fighter_purchases
-	icon = GFX_goal_generic_build_airforce
+	icon = GFX_focus_SMB_purchase_aircraft
 	prerequisite = { focus = CHI_british_cooperation focus = CHI_mission_to_the_us }
 	x = 3
 	y = 1

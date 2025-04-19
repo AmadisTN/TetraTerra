@@ -2091,7 +2091,7 @@
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 4
@@ -2142,11 +2142,11 @@
 		id = CHI_mining_commission
 		icon = GFX_goal_generic_construction2
 		prerequisite = { focus = CHI_rural_reconstruction_movement }
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = CHI_rural_reconstruction_movement
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -2232,6 +2232,7 @@
 		}
 
 		available = {
+			controls_state = 620
 			NOT = {
 				has_idea = CHI_hyper_inflation_5
 			}
@@ -2285,7 +2286,7 @@
 
 	focus = {
 		id = CHI_financial_policy
-		icon = GFX_goal_generic_positive_trade_relations
+		icon = GFX_focus_generic_currency_reforms
 		prerequisite = { focus = CHI_unified_industrial_planning }
 		prerequisite = { focus = CHI_welfare }
 		x = 5
@@ -2315,18 +2316,24 @@
 		completion_reward = {
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = CHI_t_v_soong_political_advisor
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_timed_idea = {
+				idea = CHI_financial_reform
+				days = 365
+			}
 		}
 	}
 
 	focus = {
 		id = CHI_price_controls
-		icon = GFX_goal_generic_neutrality_focus
+		icon = GFX_focus_hol_abandon_the_gold_standard
 		prerequisite = { focus = CHI_financial_policy }
-		x = 0
+		x = -1
 		y = 1
+		mutually_exclusive = { focus = CHI_exploit_the_free_market }
 		relative_position_id = CHI_financial_policy
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -2347,6 +2354,40 @@
 		search_filters = { FOCUS_FILTER_CHI_INFLATION }
 		completion_reward = {
 			CHI_hyper_inflation_level_down = yes
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = CHI_exploit_the_free_market
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = CHI_financial_policy }
+		x = 1
+		y = 1
+		mutually_exclusive = { focus = CHI_price_controls }
+		relative_position_id = CHI_financial_policy
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_hyper_inflation = yes
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_CHI_INFLATION }
+		completion_reward = {
+			CHI_hyper_inflation_level_up = yes
 		}
 	}
 
@@ -2354,7 +2395,7 @@
 		id = CHI_grain_tax
 		icon = GFX_focus_generic_agricultural_subsidies
 		prerequisite = { focus = CHI_price_controls }
-		x = -1
+		x = 0
 		y = 2
 		relative_position_id = CHI_price_controls
 
@@ -2384,9 +2425,12 @@
 
 	focus = {
 		id = CHI_reform_the_national_bank
-		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = CHI_price_controls }
-		x = 0
+		icon = GFX_focus_GER_customs_union
+		prerequisite = { 
+			focus = CHI_price_controls 
+			focus = CHI_exploit_the_free_market
+		}
+		x = 1
 		y = 1
 		relative_position_id = CHI_price_controls
 
