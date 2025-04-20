@@ -120,8 +120,8 @@
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_war_support = 0.1
 			CHI_hyper_inflation_level_up = yes
+			add_war_support = 0.1
 		}
 	}
 
@@ -159,8 +159,8 @@
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_war_support = 0.1
 			CHI_hyper_inflation_level_up = yes
+			add_war_support = 0.1
 		}
 	}
 
@@ -269,9 +269,9 @@
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		completion_reward = {			
+		completion_reward = {
+			CHI_hyper_inflation_level_up = yes			
 			add_war_support = 0.1
-			CHI_hyper_inflation_level_up = yes
 		}
 	}
 
@@ -310,8 +310,8 @@
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_war_support = 0.1
 			CHI_hyper_inflation_level_up = yes
+			add_war_support = 0.1
 		}
 	}
 
@@ -350,8 +350,8 @@
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_research_slot = 1
 			CHI_hyper_inflation_level_up = yes
+			add_research_slot = 1
 		}
 	}
 
@@ -623,12 +623,21 @@
 
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
-			IF = {
-				limit = {
+			if = {
+				limit = { 
 					has_idea = CHI_ineffective_bureaucracy_start
 				}
-				remove_ideas = CHI_ineffective_bureaucracy_start
-			} 
+				swap_ideas = {
+					remove_idea = CHI_ineffective_bureaucracy_start
+					add_idea = CHI_ineffective_bureaucracy_no_recruitable
+				}
+			}
+			else_if = {
+				limit = { 
+					has_idea = CHI_ineffective_bureaucracy_no_consumer
+				}
+				remove_ideas = CHI_ineffective_bureaucracy_no_consumer
+			}
 			IF = {
 				limit = {
 					has_idea = CHI_ineffective_bureaucracy_warlord
@@ -855,6 +864,7 @@
 
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
+			add_political_power = -25
 			add_stability = 0.05
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_timed_idea = {
@@ -2033,7 +2043,7 @@
 		y = 1
 		relative_position_id = CHI_prioritize_the_interior
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 4
@@ -2079,6 +2089,7 @@
 				has_war = no
 				has_stability > 0.7
 			}
+			amount_research_slots < 6
 		}
 
 		bypass = {
@@ -2110,8 +2121,8 @@
 		}
 
 		available = {
-			num_of_factories > 74
-			amount_research_slots < 5
+			num_of_factories > 50
+			amount_research_slots < 6
 		}
 
 		bypass = {
@@ -2375,7 +2386,7 @@
 		prerequisite = { focus = CHI_financial_policy }
 		x = -1
 		y = 1
-		mutually_exclusive = { focus = CHI_exploit_the_free_market }
+		mutually_exclusive = { focus = CHI_subsities_to_merchants }
 		relative_position_id = CHI_financial_policy
 
 		cost = 5
@@ -2404,7 +2415,7 @@
 	}
 
 	focus = {
-		id = CHI_exploit_the_free_market
+		id = CHI_subsities_to_merchants
 		icon = GFX_goal_generic_positive_trade_relations
 		prerequisite = { focus = CHI_financial_policy }
 		x = 1
@@ -2433,6 +2444,7 @@
 		search_filters = { FOCUS_FILTER_CHI_INFLATION }
 		completion_reward = {
 			CHI_hyper_inflation_level_up = yes
+			add_ideas = { CHI_subsities_to_merchants }
 		}
 	}
 
@@ -2473,7 +2485,7 @@
 		icon = GFX_focus_GER_customs_union
 		prerequisite = { 
 			focus = CHI_price_controls 
-			focus = CHI_exploit_the_free_market
+			focus = CHI_subsities_to_merchants
 		}
 		x = 1
 		y = 1
@@ -2486,6 +2498,9 @@
 		}
 
 		available = {
+			NOT = {
+				has_idea = CHI_financial_reform
+			}
 			has_hyper_inflation = yes
 		}
 
@@ -2500,6 +2515,21 @@
 		search_filters = { FOCUS_FILTER_CHI_INFLATION }
 		completion_reward = {
 			CHI_hyper_inflation_level_down = yes
+			if = {
+				limit = { 
+					has_idea = CHI_ineffective_bureaucracy_start
+				}
+				swap_ideas = {
+					remove_idea = CHI_ineffective_bureaucracy_start
+					add_idea = CHI_ineffective_bureaucracy_no_consumer
+				}
+			}
+			else_if = {
+				limit = { 
+					has_idea = CHI_ineffective_bureaucracy_no_recruitable
+				}
+				remove_ideas = CHI_ineffective_bureaucracy_no_recruitable
+			}
 		}
 	}
 
@@ -2511,7 +2541,7 @@
 		y = 2
 		relative_position_id = CHI_reform_the_national_bank
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
