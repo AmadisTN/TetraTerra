@@ -1770,7 +1770,7 @@ shared_focus = {
 	}
 
 	bypass = {
-		NOT = { has_idea = CHI_nine_power_treaty }
+		NOT = { has_idea = CHI_nine_power_treaty_start }
 	}
 
 	cancel_if_invalid = yes
@@ -1778,7 +1778,7 @@ shared_focus = {
 	available_if_capitulated = yes
 
 	completion_reward = {
-		remove_ideas = CHI_nine_power_treaty
+		remove_ideas = CHI_nine_power_treaty_start
 	}
 }
 

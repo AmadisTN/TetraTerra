@@ -55,7 +55,7 @@
 	focus = {
 		id = CHI_three_principles_of_the_people
 		icon = GFX_goal_generic_national_unity
-		x = 14
+		x = 15
 		y = 0
 
 		cost = 10
@@ -90,7 +90,7 @@
 		id = CHI_welfare
 		icon = GFX_goal_generic_consumer_goods
 		prerequisite = { focus = CHI_three_principles_of_the_people }
-		x = -5
+		x = -6
 		y = 1
 		relative_position_id = CHI_three_principles_of_the_people
 
@@ -277,7 +277,7 @@
 
 	focus = {
 		id = CHI_free_hospitals
-		icon = GFX_goal_generic_improve_relations
+		icon = GFX_focus_generic_field_hostpital
 		prerequisite = { focus = CHI_new_life_movement }
 		prerequisite = { focus = CHI_unemployment_assistance }
 		x = 0
@@ -392,7 +392,7 @@
 		id = CHI_path_of_republicanism
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = CHI_three_principles_of_the_people }
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = CHI_three_principles_of_the_people
 
@@ -428,7 +428,7 @@
 		id = CHI_constitutional_reform
 		icon = GFX_goal_generic_forceful_treaty
 		prerequisite = { focus = CHI_path_of_republicanism }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = CHI_path_of_republicanism
 
@@ -501,7 +501,6 @@
 		id = CHI_inter_party_coordination_council
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = CHI_constitutional_reform }
-		prerequisite = { focus = CHI_executive_yuan }
 		x = 1
 		y = 1
 		relative_position_id = CHI_constitutional_reform
@@ -531,10 +530,11 @@
 
 	focus = {
 		id = CHI_judicial_yuan
-		icon = GFX_goal_generic_defence
+		icon = GFX_focus_generic_court
 		prerequisite = { focus = CHI_republicanism }
 		prerequisite = { focus = CHI_inter_party_coordination_council }
-		x = 1
+		prerequisite = { focus = CHI_executive_yuan }
+		x = 3
 		y = 1
 		relative_position_id = CHI_republicanism
 
@@ -564,12 +564,12 @@
 
 	focus = {
 		id = CHI_control_yuan
-		icon = GFX_goal_generic_attack_allies
+		icon = GFX_focus_ARG_anti_corruption_policies
 		prerequisite = { focus = CHI_judicial_yuan }
 		prerequisite = { focus = CHI_legislative_yuan }
 		x = 1
 		y = 1
-		relative_position_id = CHI_judicial_yuan
+		relative_position_id = CHI_legislative_yuan
 
 		cost = 10
 
@@ -625,9 +625,9 @@
 		completion_reward = {
 			IF = {
 				limit = {
-					has_idea = CHI_ineffective_bureaucracy
+					has_idea = CHI_ineffective_bureaucracy_start
 				}
-				remove_ideas = CHI_ineffective_bureaucracy
+				remove_ideas = CHI_ineffective_bureaucracy_start
 			} 
 			IF = {
 				limit = {
@@ -642,10 +642,11 @@
 	focus = { # -----------------------------------------------
 		id = CHI_achieve_democracy
 		icon = GFX_focus_generic_population_growth
-		prerequisite = { focus = CHI_examination_yuan }
-		x = 0
-		y = 2
-		relative_position_id = CHI_examination_yuan
+		prerequisite = { focus = CHI_judicial_yuan }
+		prerequisite = { focus = CHI_legislative_yuan }
+		x = -1
+		y = 4
+		relative_position_id = CHI_legislative_yuan
 
 		cost = 10
 
@@ -679,7 +680,7 @@
 		icon = GFX_goal_generic_demand_territory
 		prerequisite = { focus = CHI_path_of_republicanism }
 		x = 1
-		y = 1
+		y = 2
 		relative_position_id = CHI_path_of_republicanism
 
 		cost = 10
@@ -711,8 +712,8 @@
 		icon = GFX_focus_chi_legislative_yuan
 		prerequisite = { focus = CHI_executive_yuan }
 		prerequisite = { focus = CHI_inter_party_coordination_council }
-		x = 0
-		y = 2
+		x = 1
+		y = 1
 		relative_position_id = CHI_executive_yuan
 
 		cost = 10
@@ -748,7 +749,7 @@
 		id = CHI_national_affairs
 		icon = GFX_focus_GER_ally_chiang_kai_shek
 		prerequisite = { focus = CHI_three_principles_of_the_people }
-		x = 5
+		x = 6
 		y = 1
 		relative_position_id = CHI_three_principles_of_the_people
 
@@ -777,7 +778,7 @@
 	}
 
 	focus = {
-		id = CHI_foreign_threats
+		id = CHI_prioritize_foreign_threats
 		icon = GFX_goal_generic_territory_or_war
 		prerequisite = { focus = CHI_national_affairs }
 		mutually_exclusive = { focus = CHI_prioritize_the_interior }
@@ -785,7 +786,7 @@
 		y = 1
 		relative_position_id = CHI_national_affairs
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 4
@@ -805,7 +806,12 @@
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_war_support = 0.1
+			add_war_support = 0.05
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_timed_idea = {
+				idea = CHI_prioritize_foreign_threats
+				days = 365
+			}
 		}
 	}
 
@@ -813,12 +819,12 @@
 		id = CHI_prioritize_the_interior
 		icon = GFX_focus_chi_proclaim_rival_government
 		prerequisite = { focus = CHI_national_affairs }
-		mutually_exclusive = { focus = CHI_foreign_threats }
+		mutually_exclusive = { focus = CHI_prioritize_foreign_threats }
 		x = 1
 		y = 1cxx
 		relative_position_id = CHI_national_affairs
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -850,18 +856,23 @@
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_stability = 0.05
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_timed_idea = {
+				idea = CHI_prioritize_the_interior
+				days = 365
+			}
 		}
 	}
 
 	focus = {
 		id = CHI_united_front
 		icon = GFX_focus_chi_united_front
-		prerequisite = { focus = CHI_foreign_threats }
+		prerequisite = { focus = CHI_prioritize_foreign_threats }
 		x = 0
 		y = 2
-		relative_position_id = CHI_foreign_threats
+		relative_position_id = CHI_prioritize_foreign_threats
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -885,6 +896,11 @@
 		}
 
 		completion_reward = {
+			add_war_support = 0.05
+			PRC = {
+				add_war_support = 0.05
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			CHI = {
 				set_rule = { can_create_factions = yes }
 				create_faction = chinese_united_front
@@ -896,9 +912,12 @@
 	}
 
 	focus = {
-		id = CHI_pick_a_fight_with_japan
+		id = CHI_end_the_fascist_threat
 		icon = GFX_focus_AST_war_japan
-		prerequisite = { focus = CHI_united_front focus = CHI_anti_communism }
+		prerequisite = { 
+			focus = CHI_united_front 
+			focus = CHI_anti_communist_front 
+		}
 		x = 1
 		y = 1
 		relative_position_id = CHI_united_front
@@ -921,9 +940,10 @@
 		}
 
 		bypass = {
-			OR = {
-				has_war_with = JAP
-				has_war_with = MAN
+			NOT = {
+				JAP = { has_government = fascism }
+				MAN = { has_government = fascism }
+				MEN = { has_government = fascism }
 			}
 		}
 
@@ -937,25 +957,39 @@
 
 		completion_reward = {
 			if = {
-				limit = {
+				limit = { 
 					MAN = {
-						OR = {
-							is_in_faction_with = JAP
-							is_puppet_of = JAP
-						}
+						has_government = fascism
 					}
 				}
 				create_wargoal = {
 					type = annex_everything
-					target = MAN
-					expire = 0
+			 		target = MAN
+			 		expire = 0
 				}
-				else = {
-					create_wargoal = {
-						type = annex_everything
-						target = JAP
-						expire = 0
-					}	
+			}
+			if = {
+				limit = { 
+					MEN = {
+						has_government = fascism
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+			 		target = MEN
+			 		expire = 0
+				}
+			}
+			if = {
+				limit = { 
+					JAP = {
+						has_government = fascism
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+			 		target = JAP
+			 		expire = 0
 				}
 			}
 			hidden_effect = {
@@ -967,10 +1001,10 @@
 	focus = { # -----------------------------------------------
 		id = CHI_achieve_nationalism
 		icon = GFX_focus_generic_china1
-		prerequisite = { focus = CHI_pick_a_fight_with_japan }
+		prerequisite = { focus = CHI_end_the_fascist_threat }
 		x = 0
 		y = 3
-		relative_position_id = CHI_pick_a_fight_with_japan
+		relative_position_id = CHI_end_the_fascist_threat
 
 		cost = 10
 
@@ -999,14 +1033,14 @@
 	}
 
 	focus = {
-		id = CHI_anti_communism
+		id = CHI_anti_communist_front
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = { focus = CHI_prioritize_the_interior }
 		x = 0
 		y = 2
 		relative_position_id = CHI_prioritize_the_interior
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -1058,6 +1092,17 @@
 		}
 
 		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+			PRC = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = medium_decrease
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			if = {		
 				limit = {
 					SIK = {
@@ -1163,7 +1208,7 @@
 		y = 1
 		relative_position_id = CHI_prioritize_the_interior
 
-		cost = 10
+		cost = 15
 
 		ai_will_do = {
 			factor = 1
@@ -1240,10 +1285,10 @@
 	focus = {
 		id = CHI_war_of_resistance
 		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = CHI_pick_a_fight_with_japan }
+		prerequisite = { focus = CHI_end_the_fascist_threat }
 		x = 4
 		y = 1
-		relative_position_id = CHI_pick_a_fight_with_japan
+		relative_position_id = CHI_end_the_fascist_threat
 
 		cost = 10
 
@@ -1981,7 +2026,7 @@
 		id = CHI_expand_the_academica_sinica
 		icon = GFX_focus_research2
 		prerequisite = { 
-			focus = CHI_foreign_threats 
+			focus = CHI_prioritize_foreign_threats
 			focus = CHI_prioritize_the_interior
 		}
 		x = -1
