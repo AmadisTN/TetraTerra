@@ -13,7 +13,7 @@
 
 	default = no
 
-	continuous_focus_position = { x = 20 y = 1000 }
+	continuous_focus_position = { x = 100 y = 1200 }
 
 #	focus = {
 #		id = CHI_
@@ -55,7 +55,7 @@
 	focus = {
 		id = CHI_three_principles_of_the_people
 		icon = GFX_goal_generic_national_unity
-		x = 15
+		x = 16
 		y = 0
 
 		cost = 10
@@ -351,7 +351,15 @@
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			CHI_hyper_inflation_level_up = yes
-			add_research_slot = 1
+			if = {
+				limit = { 
+					has_idea = CHI_rural_society
+				}
+				swap_ideas = {
+					remove_idea = CHI_rural_society
+					add_idea = CHI_rural_society_no_research
+				}
+			}
 		}
 	}
 
@@ -384,7 +392,12 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+			}
 		}
 	}
 
@@ -531,12 +544,11 @@
 	focus = {
 		id = CHI_judicial_yuan
 		icon = GFX_focus_generic_court
-		prerequisite = { focus = CHI_republicanism }
 		prerequisite = { focus = CHI_inter_party_coordination_council }
 		prerequisite = { focus = CHI_executive_yuan }
-		x = 3
+		x = 1
 		y = 1
-		relative_position_id = CHI_republicanism
+		relative_position_id = CHI_executive_yuan
 
 		cost = 10
 
@@ -565,11 +577,11 @@
 	focus = {
 		id = CHI_control_yuan
 		icon = GFX_focus_ARG_anti_corruption_policies
-		prerequisite = { focus = CHI_judicial_yuan }
 		prerequisite = { focus = CHI_legislative_yuan }
+		prerequisite = { focus = CHI_judicial_yuan }
 		x = 1
 		y = 1
-		relative_position_id = CHI_legislative_yuan
+		relative_position_id = CHI_judicial_yuan
 
 		cost = 10
 
@@ -651,9 +663,9 @@
 	focus = { # -----------------------------------------------
 		id = CHI_achieve_democracy
 		icon = GFX_focus_generic_population_growth
-		prerequisite = { focus = CHI_judicial_yuan }
 		prerequisite = { focus = CHI_legislative_yuan }
-		x = -1
+		prerequisite = { focus = CHI_judicial_yuan }
+		x = 1
 		y = 4
 		relative_position_id = CHI_legislative_yuan
 
@@ -669,6 +681,7 @@
 			democratic > 0.75
 			has_stability > 0.85
 			has_war = no
+			amount_research_slots < 6
 		}
 
 		bypass = {
@@ -680,7 +693,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			
+			add_research_slot = 1
 		}
 	}
 
@@ -719,9 +732,10 @@
 	focus = {
 		id = CHI_legislative_yuan
 		icon = GFX_focus_chi_legislative_yuan
-		prerequisite = { focus = CHI_executive_yuan }
+		prerequisite = { focus = CHI_republicanism }
 		prerequisite = { focus = CHI_inter_party_coordination_council }
-		x = 1
+		prerequisite = { focus = CHI_executive_yuan }
+		x = -1
 		y = 1
 		relative_position_id = CHI_executive_yuan
 
@@ -2110,7 +2124,7 @@
 		id = CHI_chemical_research_institute
 		icon = GFX_focus_research
 		prerequisite = { focus = CHI_unified_industrial_planning }
-		x = -2
+		x = -3
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
@@ -2143,7 +2157,7 @@
 		id = CHI_rural_reconstruction_movement
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = CHI_unified_industrial_planning }
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
@@ -2189,6 +2203,7 @@
 					level = 1
 					instant_build = yes
 				}
+				add_extra_state_shared_building_slots = 1
 			}
 
 		}
@@ -2230,11 +2245,608 @@
 		}
 	}
 
+	focus = { # -----------------------------------------------
+		id = CHI_tarim_deposits
+		icon = GFX_focus_PER_establish_opec
+		prerequisite = { focus = CHI_mining_commission }
+		prerequisite = { focus = CHI_western_economic_reintegration }
+		x = -1
+		y = 2
+		relative_position_id = CHI_western_economic_reintegration
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 287
+			has_full_control_of_state = 617
+			has_full_control_of_state = 618
+			has_full_control_of_state = 619
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			287 = {
+				add_resource = {
+					type = oil
+					amount = 4
+					state = THIS
+				}
+			}
+			617 = {
+				add_resource = {
+					type = oil
+					amount = 5
+					state = THIS
+				}
+			}
+			618 = {
+				add_resource = {
+					type = oil
+					amount = 1
+					state = THIS
+				}
+			}
+			619 = {
+				add_resource = {
+					type = oil
+					amount = 1
+					state = THIS
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_costal_reconstruction_movement
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = CHI_unified_industrial_planning }
+		x = 1
+		y = 1
+		relative_position_id = CHI_unified_industrial_planning
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 597
+			has_full_control_of_state = 598
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			598 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			597 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_urban_industrial_program
+		icon = GFX_focus_SWE_landsverk
+		prerequisite = { focus = CHI_rural_reconstruction_movement }
+		prerequisite = { focus = CHI_costal_reconstruction_movement }
+		x = 1
+		y = 2
+		relative_position_id = CHI_rural_reconstruction_movement
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 608
+			has_full_control_of_state = 613
+			has_full_control_of_state = 743
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			CHI_hyper_inflation_level_up = yes
+			608 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			613 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			743 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_three_gorges_dam_project
+		icon = GFX_focus_generic_hydroelectric_energy
+		prerequisite = { focus = CHI_urban_industrial_program }
+		x = 0
+		y = 1
+		relative_position_id = CHI_urban_industrial_program
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 620
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			CHI_hyper_inflation_level_up = yes
+			add_political_power = 25
+			620 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dam
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_western_economic_reintegration
+		icon = GFX_focus_generic_low_cost_housing
+		prerequisite = { focus = CHI_urban_industrial_program }
+		x = -2
+		y = 1
+		relative_position_id = CHI_urban_industrial_program
+
+		cost = 15
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 287
+			has_full_control_of_state = 617
+			has_full_control_of_state = 618
+			has_full_control_of_state = 619
+			has_full_control_of_state = 759
+			has_full_control_of_state = 760
+			has_full_control_of_state = 604
+			has_full_control_of_state = 754
+			has_full_control_of_state = 755
+			has_full_control_of_state = 756
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			CHI_hyper_inflation_level_up = yes
+			608 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			613 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			620 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_central_economic_reintegration
+		icon = GFX_focus_generic_low_cost_housing
+		prerequisite = { focus = CHI_urban_industrial_program }
+		x = -1
+		y = 2
+		relative_position_id = CHI_urban_industrial_program
+
+		cost = 15
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 753
+			has_full_control_of_state = 283
+			has_full_control_of_state = 616
+			has_full_control_of_state = 746
+			has_full_control_of_state = 621
+			has_full_control_of_state = 615
+			has_full_control_of_state = 622
+			has_full_control_of_state = 605
+			has_full_control_of_state = 607
+			has_full_control_of_state = 744
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			CHI_hyper_inflation_level_up = yes
+			608 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			613 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			620 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_southern_economic_reintegration
+		icon = GFX_focus_generic_low_cost_housing
+		prerequisite = { focus = CHI_urban_industrial_program }
+		x = 1
+		y = 2
+		relative_position_id = CHI_urban_industrial_program
+
+		cost = 15
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 591
+			has_full_control_of_state = 592
+			has_full_control_of_state = 593
+			has_full_control_of_state = 594
+			has_full_control_of_state = 599
+			has_full_control_of_state = 325
+			has_full_control_of_state = 747
+			has_full_control_of_state = 0
+			has_full_control_of_state = 0
+			has_full_control_of_state = 0
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			CHI_hyper_inflation_level_up = yes
+			608 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			613 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			620 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_cities_states_economic_reintegration
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = CHI_southern_economic_reintegration }
+		x = 0
+		y = 2
+		relative_position_id = CHI_southern_economic_reintegration
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 728
+			has_full_control_of_state = 729
+			has_full_control_of_state = 326
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			728 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			729 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			326 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_northern_economic_reintegration
+		icon = GFX_focus_generic_low_cost_housing
+		prerequisite = { focus = CHI_urban_industrial_program }
+		x = 2
+		y = 1
+		relative_position_id = CHI_urban_industrial_program
+
+		cost = 15
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 611
+			has_full_control_of_state = 612
+			has_full_control_of_state = 610
+			has_full_control_of_state = 328
+			has_full_control_of_state = 714
+			has_full_control_of_state = 715
+			has_full_control_of_state = 716
+			has_full_control_of_state = 717
+			has_full_control_of_state = 761
+			has_full_control_of_state = 0
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			CHI_hyper_inflation_level_up = yes
+			608 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			613 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			620 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_japaneese_excolonial_economic_reintegration
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = CHI_northern_economic_reintegration }
+		prerequisite = { focus = CHI_southern_economic_reintegration }
+		x = 1
+		y = 2
+		relative_position_id = CHI_northern_economic_reintegration
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 609
+			has_full_control_of_state = 745
+			has_full_control_of_state = 524
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			608 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			613 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			620 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
 	focus = {
 		id = CHI_taiyuan_arsenal
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = { focus = CHI_unified_industrial_planning }
-		x = 2
+		x = 3
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
@@ -2277,7 +2889,7 @@
 		id = CHI_develop_the_hanyan_arsenal
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = { focus = CHI_unified_industrial_planning }
-		x = 4
+		x = 5
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
@@ -2345,7 +2957,7 @@
 		icon = GFX_focus_generic_currency_reforms
 		prerequisite = { focus = CHI_unified_industrial_planning }
 		prerequisite = { focus = CHI_welfare }
-		x = 5
+		x = 6
 		y = 2
 		relative_position_id = CHI_unified_industrial_planning
 

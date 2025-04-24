@@ -153,6 +153,7 @@ add_ideas = {
 	CHI_army_corruption_1
 	CHI_ineffective_bureaucracy_start
 	CHI_incompetent_officers_start
+	CHI_rural_society
 	free_trade
 	CHI_hyper_inflation_1
 	german_advisors
