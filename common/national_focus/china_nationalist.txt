@@ -946,7 +946,7 @@
 		y = 1
 		relative_position_id = CHI_united_front
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -2101,7 +2101,7 @@
 			}
 			OR = {			
 				has_war = no
-				has_stability > 0.7
+				has_stability > 0.5
 			}
 			amount_research_slots < 6
 		}
@@ -2128,7 +2128,7 @@
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -2189,6 +2189,7 @@
 					level = 1
 					instant_build = yes
 				}
+				add_extra_state_shared_building_slots = 1
 			}
 			602 = {
 				add_building_construction = {
@@ -2246,7 +2247,7 @@
 	}
 
 	focus = { # -----------------------------------------------
-		id = CHI_tarim_deposits
+		id = CHI_tarim_oil_deposits
 		icon = GFX_focus_PER_establish_opec
 		prerequisite = { focus = CHI_mining_commission }
 		prerequisite = { focus = CHI_western_economic_reintegration }
@@ -2593,6 +2594,76 @@
 	}
 
 	focus = { # -----------------------------------------------
+		id = CHI_launch_iron_extraction_sites
+		icon = GFX_focus_generic_steel
+		prerequisite = { focus = CHI_central_economic_reintegration }
+		x = 0
+		y = 2
+		relative_position_id = CHI_central_economic_reintegration
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			has_full_control_of_state = 621
+			has_full_control_of_state = 615
+			has_full_control_of_state = 614
+			has_full_control_of_state = 608
+			has_full_control_of_state = 613
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			621 = {
+				add_resource = {
+					type = steel
+					amount = 5
+					state = THIS
+				}
+			}
+			615 = {
+				add_resource = {
+					type = steel
+					amount = 9
+					state = THIS
+				}
+			}
+			614 = {
+				add_resource = {
+					type = steel
+					amount = 5
+					state = THIS
+				}
+			}
+			608 = {
+				add_resource = {
+					type = steel
+					amount = 11
+					state = THIS
+				}
+			}
+			613 = {
+				add_resource = {
+					type = steel
+					amount = 7
+					state = THIS
+				}
+			}
+		}
+	}
+
+	focus = { # -----------------------------------------------
 		id = CHI_southern_economic_reintegration
 		icon = GFX_focus_generic_low_cost_housing
 		prerequisite = { focus = CHI_urban_industrial_program }
@@ -2658,7 +2729,7 @@
 	}
 
 	focus = { # -----------------------------------------------
-		id = CHI_cities_states_economic_reintegration
+		id = CHI_post_colonial_recovery_plan
 		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = CHI_southern_economic_reintegration }
 		x = 0
@@ -2785,10 +2856,9 @@
 	}
 
 	focus = { # -----------------------------------------------
-		id = CHI_japaneese_excolonial_economic_reintegration
+		id = CHI_post_japanese_recovery_plan
 		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = CHI_northern_economic_reintegration }
-		prerequisite = { focus = CHI_southern_economic_reintegration }
 		x = 1
 		y = 2
 		relative_position_id = CHI_northern_economic_reintegration
@@ -2815,7 +2885,7 @@
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			608 = {
+			609 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
@@ -2823,19 +2893,28 @@
 					instant_build = yes
 				}
 			}
-			613 = {
-				add_extra_state_shared_building_slots = 1
+			745 = {
 				add_building_construction = {
-					type = industrial_complex
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
 					level = 1
 					instant_build = yes
 				}
 			}
-			620 = {
-				add_extra_state_shared_building_slots = 1
+			524 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
