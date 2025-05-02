@@ -407,6 +407,7 @@
 		prerequisite = { focus = CHI_three_principles_of_the_people }
 		x = -1
 		y = 1
+		mutually_exclusive = { focus = CHI_protect_chiang_kai_shek }
 		relative_position_id = CHI_three_principles_of_the_people
 
 		cost = 10
@@ -445,7 +446,7 @@
 		y = 1
 		relative_position_id = CHI_path_of_republicanism
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -465,13 +466,16 @@
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_war_support = 0.1
+			add_timed_idea = {
+				idea = CHI_constitutional_reform
+				days = 182.5
+			}
 		}
 	}
 
 	focus = {
 		id = CHI_republicanism
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_focus_spr_torchbearers_of_tomorrow
 		prerequisite = { focus = CHI_constitutional_reform }
 		x = -1
 		y = 1
@@ -497,6 +501,10 @@
 
 
 		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
 			every_country = {
 				limit = {
 					is_major = yes
@@ -518,7 +526,7 @@
 		y = 1
 		relative_position_id = CHI_constitutional_reform
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -537,6 +545,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			add_political_power = 30
 			add_ideas = CHI_inter_party_coordination_council
 		}
 	}
@@ -732,7 +741,7 @@
 	focus = {
 		id = CHI_legislative_yuan
 		icon = GFX_focus_chi_legislative_yuan
-		prerequisite = { focus = CHI_republicanism }
+		#prerequisite = { focus = CHI_republicanism }
 		prerequisite = { focus = CHI_inter_party_coordination_council }
 		prerequisite = { focus = CHI_executive_yuan }
 		x = -1
@@ -765,6 +774,42 @@
 			}
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = CHI_kwong_jiang_political_advisor
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_protect_chiang_kai_shek
+		icon = GFX_focus_prc_remove_chiang_kai_shek
+		x = 1
+		y = 1
+		mutually_exclusive = { focus = CHI_path_of_republicanism }
+		relative_position_id = CHI_three_principles_of_the_people
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_stability = 0.1
 		}
 	}
 
@@ -1957,8 +2002,8 @@
 	}
 
 	focus = {
-		id = CHI_even_better_officers
-		icon = GFX_goal_generic_axis_build_infantry
+		id = CHI_foreign_training_model
+		icon = GFX_goal_generic_position_armies
 		prerequisite = { focus = CHI_better_officers }
 		x = 0
 		y = 2
@@ -1971,7 +2016,12 @@
 		}
 
 		available = {
-
+			OR = {
+				has_completed_focus = CHI_chinese_general_staff
+				has_completed_focus = CHI_invite_soviet_advisers
+				has_completed_focus = CHI_french_military_mission
+				has_completed_focus = CHI_chinese_expeditionary_force
+			}
 		}
 
 		bypass = {
@@ -2450,7 +2500,7 @@
 		y = 2
 		relative_position_id = CHI_rural_reconstruction_movement
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 4

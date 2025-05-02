@@ -88,7 +88,7 @@ shared_focus = {
 	x = -10
 	y = 1
 	relative_position_id = CHI_invite_foreign_investors
-	cost = 5
+	cost = 2.5
 
 	ai_will_do = {
 		factor = 1
@@ -126,7 +126,6 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
-		add_political_power = 10
 		GER = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -1037,7 +1036,7 @@ shared_focus = {
 	y = 0
 	relative_position_id = CHI_mission_to_germany
 
-	cost = 5
+	cost = 2.5
 
 	ai_will_do = {
 		factor = 1
@@ -1075,7 +1074,6 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
-		add_political_power = 10
 		SOV = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -1250,7 +1248,7 @@ shared_focus = {
 	y = 0
 	relative_position_id = CHI_mission_to_the_soviet_union
 
-	cost = 5
+	cost = 2.5
 
 	ai_will_do = {
 		factor = 1
@@ -1279,7 +1277,6 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
-		add_political_power = 10
 		FRA = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -2606,7 +2603,7 @@ shared_focus = {
 	y = 0
 	relative_position_id = CHI_reach_out_to_france
 
-	cost = 5
+	cost = 2.5
 
 	ai_will_do = {
 		factor = 1
@@ -2643,7 +2640,6 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
-		add_political_power = 10
 		ENG = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -3355,7 +3351,7 @@ shared_focus = {
 	mutually_exclusive = { focus = CHI_collaboration_with_the_japanese }
 	relative_position_id = CHI_british_cooperation
 
-	cost = 5
+	cost = 2.5
 
 	ai_will_do = {
 		factor = 1
@@ -3388,7 +3384,6 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
-		add_political_power = 10
 		USA = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -3846,7 +3841,7 @@ shared_focus = {
 	y = 0
 	relative_position_id = CHI_mission_to_the_us
 
-	cost = 5
+	cost = 2.5
 
 	ai_will_do = {
 		factor = 1
@@ -3873,7 +3868,6 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
-		add_political_power = 10
 		JAP = {
 			add_opinion_modifier = {
 				target = ROOT

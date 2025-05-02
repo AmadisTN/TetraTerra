@@ -214,6 +214,25 @@ ideas = {
 			}
 		}
 
+		CHI_constitutional_reform = {
+			picture = FRA_scw_intervention_republicans_focus
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = -0.1
+				war_support_weekly = 0.005
+			}
+		}
+
 		CHI_prioritize_foreign_threats = {
 			picture = FRA_scw_intervention_nationalists_focus
 		
