@@ -114,6 +114,9 @@ CHI_ineffective_bureaucracy_no_consumer_desc: "The chaos of the civil war has di
 CHI_incompetent_officers_start: "Incompetent Officers"
 CHI_incompetent_officers_start_desc: "Our officers are not yet up to the task of managing a modern war. Hard lessons will have to be learned before they are truly equal to their counterparts in other nations. Educating them will be part of a bigger program of army reform."
 
+CHI_incompetent_officers_lower: "Incompetent Officers"
+CHI_incompetent_officers_lower_desc: "Our officers are not yet up to the task of managing a modern war. Hard lessons will have to be learned before they are truly equal to their counterparts in other nations. Educating them will be part of a bigger program of army reform."
+
 CHI_rural_society: "Rural Society"
 CHI_rural_society_desc: ""
 

@@ -55,7 +55,7 @@ shared_focus = {
 		}
 	}
 
-	cost = 10
+	cost = 7.5
 
 	ai_will_do = {
 		factor = 1
@@ -126,6 +126,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		add_political_power = 10
 		GER = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -1074,6 +1075,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		add_political_power = 10
 		SOV = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -1112,7 +1114,7 @@ shared_focus = {
 	y = 1
 	relative_position_id = CHI_mission_to_the_soviet_union
 
-	cost = 10
+	cost = 5
 
 	ai_will_do = {
 		factor = 1
@@ -1150,7 +1152,7 @@ shared_focus = {
 	y = 1
 	relative_position_id = CHI_mission_to_the_soviet_union
 
-	cost = 10
+	cost = 7.5
 
 	ai_will_do = {
 		factor = 1
@@ -1184,6 +1186,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		add_command_power = 15
 		create_corps_commander = {
 			name = "Aleksandr Cherepanov"
 			gfx = GFX_portrait_sov_aleksandr_cherepanov 
@@ -1276,6 +1279,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		add_political_power = 10
 		FRA = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -1572,7 +1576,7 @@ shared_focus = {
 	y = 3
 	relative_position_id = CHI_reach_out_to_france
 
-	cost = 10
+	cost = 7.5
 
 	ai_will_do = {
 		factor = 1
@@ -1591,6 +1595,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		army_experience = 10
 		air_experience = 25
 		if = {
 			limit = {
@@ -2638,6 +2643,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		add_political_power = 10
 		ENG = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -3382,6 +3388,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		add_political_power = 10
 		USA = {
 			add_opinion_modifier = {
 				target = ROOT
@@ -3866,6 +3873,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		add_political_power = 10
 		JAP = {
 			add_opinion_modifier = {
 				target = ROOT

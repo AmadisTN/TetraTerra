@@ -2,7 +2,6 @@ ideas = {
 	country = {
 		# -------------------------------------------- Old ideas :
 		CHI_nine_power_treaty_start = {
-
 			picture = HUN_treaty_of_triannon
 		
 			allowed = {
@@ -22,7 +21,6 @@ ideas = {
 		}
 
 		CHI_ineffective_bureaucracy_start = {
-
 			picture = generic_disjointed_gov
 		
 			allowed = {
@@ -41,8 +39,43 @@ ideas = {
 			}
 		}
 
-		CHI_incompetent_officers_start = {
+		CHI_ineffective_bureaucracy_no_consumer = {
+			picture = generic_disjointed_gov
+		
+			allowed = {
+				always = no
+			}
 
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription_factor = -0.35
+			}
+		}
+
+		CHI_ineffective_bureaucracy_no_recruitable = {
+			picture = generic_disjointed_gov
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.10
+			}
+		}
+
+		CHI_incompetent_officers_start = {
 			picture = chi_incompetent_officers
 		
 			allowed = {
@@ -58,6 +91,25 @@ ideas = {
 			modifier = {
 				command_power_gain_mult = -0.7
 				max_planning = -0.10
+				planning_speed = -0.50
+			}
+		}
+
+		CHI_incompetent_officers_lower = {
+			picture = chi_incompetent_officers
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				command_power_gain_mult = -0.5
 				planning_speed = -0.25
 			}
 		}
@@ -158,44 +210,6 @@ ideas = {
 			modifier = {
 				political_power_factor = 0.05
 				stability_weekly = 0.001
-				consumer_goods_factor = 0.10
-			}
-		}
-
-		CHI_ineffective_bureaucracy_no_consumer = {
-
-			picture = generic_disjointed_gov
-		
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				conscription_factor = -0.35
-			}
-		}
-
-		CHI_ineffective_bureaucracy_no_recruitable = {
-
-			picture = generic_disjointed_gov
-		
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-			removal_cost = -1
-			
-			modifier = {
 				consumer_goods_factor = 0.10
 			}
 		}

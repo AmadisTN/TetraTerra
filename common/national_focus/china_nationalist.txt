@@ -1858,7 +1858,7 @@
 		icon = GFX_focus_chi_army_reform
 		prerequisite = { focus = CHI_military_affairs_commission }
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = CHI_military_affairs_commission
 
 		cost = 10
@@ -1881,6 +1881,121 @@
 
 		completion_reward = {
 			unlock_decision_category_tooltip = CHI_army_reform
+		}
+	}
+
+	focus = {
+		id = CHI_60_divisions_plan
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = CHI_army_reform }
+		x = 0
+		y = 2
+		relative_position_id = CHI_army_reform
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			unlock_decision_tooltip = CHI_60_divisions_plan
+		}
+	}
+
+	focus = {
+		id = CHI_better_officers
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = CHI_army_reform }
+		x = 1
+		y = 1
+		relative_position_id = CHI_army_reform
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			if = {
+				limit = { 
+					has_idea = CHI_incompetent_officers_start
+				}
+				swap_ideas = {
+					remove_idea = CHI_incompetent_officers_start
+					add_idea = CHI_incompetent_officers_lower
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_even_better_officers
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = CHI_better_officers }
+		x = 0
+		y = 2
+		relative_position_id = CHI_better_officers
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			if = {
+				limit = { 
+					has_idea = CHI_incompetent_officers_start
+				}
+				remove_ideas = CHI_incompetent_officers_start
+			}
+			if = {
+				limit = { 
+					has_idea = CHI_incompetent_officers_lower
+				}
+				remove_ideas = CHI_incompetent_officers_lower
+			}
 		}
 	}
 
@@ -1923,38 +2038,6 @@
 			else = {
 				show_ideas_tooltip = CHI_dai_li_wtt_political_advisor
 			}
-		}
-	}
-
-	focus = {
-		id = CHI_60_divisions_plan
-		icon = GFX_goal_generic_axis_build_infantry
-		prerequisite = { focus = CHI_army_reform }
-		x = 0
-		y = 2
-		relative_position_id = CHI_military_affairs_commission
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		search_filters = { FOCUS_FILTER_MANPOWER }
-		completion_reward = {
-			unlock_decision_tooltip = CHI_60_divisions_plan
 		}
 	}
 
