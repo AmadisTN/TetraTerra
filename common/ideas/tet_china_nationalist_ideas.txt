@@ -268,5 +268,27 @@ ideas = {
 				army_core_attack_factor = 0.05
 			}
 		}
+
+		CHI_national_fortification_commission = {
+
+			picture = generic_army_war_college		
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				production_speed_bunker_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				production_speed_anti_air_building_factor = 0.1
+			}
+		}
+
 	}
 }

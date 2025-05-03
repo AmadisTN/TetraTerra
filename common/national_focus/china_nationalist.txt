@@ -55,7 +55,7 @@
 	focus = {
 		id = CHI_three_principles_of_the_people
 		icon = GFX_goal_generic_national_unity
-		x = 16
+		x = 17
 		y = 0
 
 		cost = 10
@@ -90,7 +90,7 @@
 		id = CHI_welfare
 		icon = GFX_goal_generic_consumer_goods
 		prerequisite = { focus = CHI_three_principles_of_the_people }
-		x = -6
+		x = -7
 		y = 1
 		relative_position_id = CHI_three_principles_of_the_people
 
@@ -319,9 +319,9 @@
 		id = CHI_rural_schooling
 		icon = GFX_goal_generic_scientific_exchange
 		prerequisite = { focus = CHI_free_hospitals }
-		x = 0
-		y = 5
-		relative_position_id = CHI_welfare
+		x = 1
+		y = 1
+		relative_position_id = CHI_free_hospitals
 
 		cost = 10
 
@@ -330,10 +330,7 @@
 		}
 
 		available = {
-			amount_research_slots < 5
-			NOT = {
-				has_idea = CHI_hyper_inflation_5
-			}
+			NOT = { has_idea = CHI_hyper_inflation_5 }
 		}
 
 		bypass = {
@@ -366,10 +363,10 @@
 	focus = { # -----------------------------------------------
 		id = CHI_achieve_welfare
 		icon = GFX_focus_generic_welfare
-		prerequisite = { focus = CHI_rural_schooling }
+		prerequisite = { focus = CHI_free_hospitals }
 		x = 0
-		y = 2
-		relative_position_id = CHI_rural_schooling
+		y = 4
+		relative_position_id = CHI_free_hospitals
 
 		cost = 10
 
@@ -566,7 +563,9 @@
 		}
 
 		available = {
-
+			NOT = {
+				has_idea = CHI_constitutional_reform
+			}
 		}
 
 		bypass = {
@@ -675,7 +674,7 @@
 		prerequisite = { focus = CHI_legislative_yuan }
 		prerequisite = { focus = CHI_judicial_yuan }
 		x = 1
-		y = 4
+		y = 5
 		relative_position_id = CHI_legislative_yuan
 
 		cost = 10
@@ -690,7 +689,6 @@
 			democratic > 0.75
 			has_stability > 0.85
 			has_war = no
-			amount_research_slots < 6
 		}
 
 		bypass = {
@@ -702,7 +700,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_research_slot = 1
+			
 		}
 	}
 
@@ -755,7 +753,9 @@
 		}
 
 		available = {
-
+			NOT = {
+				has_idea = CHI_constitutional_reform
+			}
 		}
 
 		bypass = {
@@ -774,6 +774,109 @@
 			}
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = CHI_kwong_jiang_political_advisor
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_western_democratic_model
+		icon = GFX_focus_generic_democratic_europe
+		prerequisite = { 
+			focus = CHI_republicanism
+		}
+		x = 0
+		y = 2
+		mutually_exclusive = { focus = CHI_chineese_democracy }
+		relative_position_id = CHI_republicanism
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				has_idea = CHI_constitutional_reform
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_chineese_democracy
+		icon = GFX_focus_ARG_anti_corruption_policies
+		prerequisite = { focus = CHI_legislative_yuan }
+		prerequisite = { focus = CHI_judicial_yuan }
+		x = -1
+		y = 1
+		mutually_exclusive = { focus = CHI_western_democratic_model }
+		relative_position_id = CHI_legislative_yuan
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		completion_reward = {
+			add_stability = -0.1
+		}
+	}
+
+	focus = { # -----------------------------------------------
+		id = CHI_chineese_research
+		icon = GFX_focus_research
+		prerequisite = { focus = CHI_chineese_democracy }
+		x = 0
+		y = 1
+		relative_position_id = CHI_chineese_democracy
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			amount_research_slots < 6
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
 		}
 	}
 
@@ -817,7 +920,7 @@
 		id = CHI_national_affairs
 		icon = GFX_focus_GER_ally_chiang_kai_shek
 		prerequisite = { focus = CHI_three_principles_of_the_people }
-		x = 6
+		x = 7
 		y = 1
 		relative_position_id = CHI_three_principles_of_the_people
 
@@ -1072,7 +1175,7 @@
 		icon = GFX_focus_generic_china1
 		prerequisite = { focus = CHI_end_the_fascist_threat }
 		x = 0
-		y = 3
+		y = 4
 		relative_position_id = CHI_end_the_fascist_threat
 
 		cost = 10
@@ -1354,8 +1457,11 @@
 	focus = {
 		id = CHI_war_of_resistance
 		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = CHI_end_the_fascist_threat }
-		x = 4
+		prerequisite = { 
+			focus = CHI_end_the_fascist_threat 
+			focus = CHI_military_affairs_commission
+		}
+		x = 5
 		y = 1
 		relative_position_id = CHI_end_the_fascist_threat
 
@@ -1366,9 +1472,7 @@
 		}
 
 		available = {
-			NOT = {
-				has_idea = CHI_army_corruption_1
-			}		
+			has_defensive_war = yes
 		}
 
 		bypass = {
@@ -1387,10 +1491,10 @@
 	focus = {
 		id = CHI_industrial_evacuations
 		icon = GFX_goal_generic_construct_infrastructure
-		prerequisite = { focus = CHI_war_of_resistance }
-		x = -2
-		y = 1
-		relative_position_id = CHI_war_of_resistance
+		prerequisite = { focus = CHI_scorched_earth_tactics }
+		x = 0
+		y = 2
+		relative_position_id = CHI_scorched_earth_tactics
 
 		cost = 5
 
@@ -1420,10 +1524,10 @@
 	focus = {
 		id = CHI_war_of_national_liberation
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		prerequisite = { focus = CHI_war_of_resistance }
-		x = 0
+		prerequisite = { focus = CHI_end_the_fascist_threat }
+		x = 3
 		y = 1
-		relative_position_id = CHI_war_of_resistance
+		relative_position_id = CHI_end_the_fascist_threat
 
 		cost = 10
 
@@ -1432,10 +1536,7 @@
 		}
 
 		available = {
-			NOT = {
-				has_idea = CHI_army_corruption_2
-			}
-			has_defensive_war = yes
+			has_war = yes
 		}
 
 		bypass = {
@@ -1466,8 +1567,8 @@
 		id = CHI_scorched_earth_tactics
 		icon = GFX_focus_generic_strike_at_democracy1
 		prerequisite = { focus = CHI_war_of_resistance }
-		x = 2
-		y = 1
+		x = 0
+		y = 2
 		relative_position_id = CHI_war_of_resistance
 
 		cost = 5
@@ -1498,7 +1599,7 @@
 		icon = GFX_focus_ITA_liberation_or_death
 		prerequisite = { focus = CHI_war_of_national_liberation }
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = CHI_war_of_national_liberation
 
 		cost = 10
@@ -1531,10 +1632,13 @@
 	focus = {
 		id = CHI_forced_conscription
 		icon = GFX_focus_generic_support_the_left_right
-		prerequisite = { focus = CHI_scorched_earth_tactics }
-		x = 0
+		prerequisite = { 
+			focus = CHI_war_of_national_liberation
+			focus = CHI_war_of_resistance
+		}
+		x = 1
 		y = 1
-		relative_position_id = CHI_scorched_earth_tactics
+		relative_position_id = CHI_war_of_national_liberation
 
 		cost = 10
 
@@ -1547,7 +1651,7 @@
 		}
 
 		available = {
-
+			has_war = yes
 		}
 
 		bypass = {
@@ -1567,19 +1671,22 @@
 	focus = {
 		id = CHI_dare_to_die_corps
 		icon = GFX_goal_generic_special_forces
-		prerequisite = { focus = CHI_forced_conscription }
-		x = 0
-		y = 2
-		relative_position_id = CHI_scorched_earth_tactics
+		prerequisite = { 
+			focus = CHI_forced_conscription 
+			focus = CHI_war_of_anti_imperialism
+		}
+		x = 1
+		y = 1
+		relative_position_id = CHI_war_of_anti_imperialism
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-
+			has_war = yes
 		}
 
 		bypass = {
@@ -1591,6 +1698,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			army_experience = 25
 			custom_effect_tooltip = CHI_50_cheaper_force_attack
 		}
 	}
@@ -1598,7 +1706,7 @@
 	focus = {
 		id = CHI_military_affairs_commission
 		icon = GFX_focus_secret_rearmament
-		x = 12
+		x = 15
 		y = 0
 		relative_position_id = CHI_three_principles_of_the_people
 
@@ -1628,12 +1736,13 @@
 	focus = {
 		id = CHI_fortify_shanghai
 		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = CHI_military_affairs_commission }
-		x = -2
+		prerequisite = { focus = CHI_war_of_resistance }
+		prerequisite = { focus = CHI_national_fortification_commission }
+		x = 1
 		y = 1
-		relative_position_id = CHI_military_affairs_commission
+		relative_position_id = CHI_war_of_resistance
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -1642,6 +1751,7 @@
 		available = {
 			 613 = {
 			 	is_fully_controlled_by = ROOT
+				is_demilitarized_zone = no
 			 }
 		}
 
@@ -1738,12 +1848,12 @@
 	focus = {
 		id = CHI_the_chinese_hindenburg_line
 		icon = GFX_goal_generic_construct_military
-		prerequisite = { focus = CHI_fortify_shanghai }
-		x = -2
+		prerequisite = { focus = CHI_national_fortification_commission }
+		x = 0
 		y = 2
-		relative_position_id = CHI_military_affairs_commission
+		relative_position_id = CHI_national_fortification_commission
 
-		cost = 10
+		cost = 7.5
 
 		ai_will_do = {
 			factor = 1
@@ -1902,8 +2012,8 @@
 		id = CHI_army_reform
 		icon = GFX_focus_chi_army_reform
 		prerequisite = { focus = CHI_military_affairs_commission }
-		x = 0
-		y = 2
+		x = -2
+		y = 1
 		relative_position_id = CHI_military_affairs_commission
 
 		cost = 10
@@ -1931,7 +2041,7 @@
 
 	focus = {
 		id = CHI_60_divisions_plan
-		icon = GFX_goal_generic_axis_build_infantry
+		icon = GFX_focus_generic_little_entente
 		prerequisite = { focus = CHI_army_reform }
 		x = 0
 		y = 2
@@ -1961,13 +2071,13 @@
 		}
 	}
 
-	focus = {
+	focus = { # -------------------------------------------------
 		id = CHI_better_officers
-		icon = GFX_goal_generic_axis_build_infantry
-		prerequisite = { focus = CHI_army_reform }
-		x = 1
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = CHI_military_affairs_commission }
+		x = 2
 		y = 1
-		relative_position_id = CHI_army_reform
+		relative_position_id = CHI_military_affairs_commission
 
 		cost = 10
 
@@ -2001,14 +2111,13 @@
 		}
 	}
 
-	focus = {
+	focus = { # -------------------------------------------------
 		id = CHI_foreign_training_model
 		icon = GFX_goal_generic_position_armies
-		prerequisite = { focus = CHI_better_officers }
+		prerequisite = { focus = CHI_whampoa_military_academy }
 		x = 0
 		y = 2
-		relative_position_id = CHI_better_officers
-
+		relative_position_id = CHI_whampoa_military_academy
 		cost = 5
 
 		ai_will_do = {
@@ -2051,9 +2160,9 @@
 
 	focus = {
 		id = CHI_bureau_of_investigation_and_statistics
-		icon = GFX_goal_generic_intelligence_exchange
+		icon = GFX_focus_GER_expand_gestapo
 		prerequisite = { focus = CHI_military_affairs_commission }
-		x = 2
+		x = 0
 		y = 1
 		relative_position_id = CHI_military_affairs_commission
 
@@ -2094,10 +2203,11 @@
 	focus = {
 		id = CHI_whampoa_military_academy
 		icon = GFX_focus_chi_whampoa_military_academy
-		prerequisite = { focus = CHI_bureau_of_investigation_and_statistics }
+		prerequisite = { focus = CHI_army_reform }
+		prerequisite = { focus = CHI_better_officers }
 		x = 2
-		y = 2
-		relative_position_id = CHI_military_affairs_commission
+		y = 1
+		relative_position_id = CHI_army_reform
 
 		cost = 10
 
@@ -2122,6 +2232,39 @@
 				add_planning = 1
 			}
 			add_ideas = CHI_whampoa_military_academy
+		}
+	}
+
+	focus = { # -------------------------------------------------
+		id = CHI_national_fortification_commission
+		icon = GFX_focus_BEL_better_than_maginot
+		x = 0
+		y = 6
+		relative_position_id = CHI_military_affairs_commission
+
+		cost = 7.5
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = CHI_national_fortification_commission
+				days = 730
+			}
 		}
 	}
 

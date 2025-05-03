@@ -38,7 +38,7 @@
 shared_focus = {
 	id = CHI_invite_foreign_investors 
 	icon = GFX_focus_generic_concessions
-	x = 44
+	x = 48
 	y = 0
 	offset = {
 		x = -6
@@ -247,8 +247,8 @@ shared_focus = {
 	id = CHI_wargaming_division
 	icon = GFX_goal_generic_position_armies
 	prerequisite = { focus = CHI_chinese_general_staff }
-	x = -1
-	y = 1
+	x = 0
+	y = 2
 	relative_position_id = CHI_chinese_general_staff
 
 	cost = 10
