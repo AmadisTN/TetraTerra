@@ -136,6 +136,27 @@ ideas = {
 			}
 		}
 
+		CHI_rural_society_less_infrastructure = {
+			picture = generic_agrarian_society
+			allowed = {
+				original_tag = CHI
+				always = no
+			}
+	
+			allowed_civil_war = {
+				always = yes
+			}
+	
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = 0.05
+				production_speed_infrastructure_factor = -0.1
+				conscription_factor = -0.15
+				research_speed_factor = -0.15
+			}
+		}
+
 		CHI_rural_society_no_research = {
 			picture = generic_agrarian_society
 			allowed = {
@@ -151,7 +172,26 @@ ideas = {
 			
 			modifier = {
 				stability_factor = 0.05
-				production_speed_infrastructure_factor = -0.25
+				production_speed_infrastructure_factor = -0.1
+				conscription_factor = -0.15
+			}
+		}
+
+		CHI_rural_society_final = {
+			picture = generic_agrarian_society
+			allowed = {
+				original_tag = CHI
+				always = no
+			}
+	
+			allowed_civil_war = {
+				always = yes
+			}
+	
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = 0.05
 				conscription_factor = -0.15
 			}
 		}
@@ -172,6 +212,26 @@ ideas = {
 			
 			modifier = {
 				stability_factor = 0.05
+			}
+		}
+
+		CHI_three_principles_of_the_people_welfare = {
+			#picture = POL_ideology_drift_defence
+			picture = ARG_social_welfare_fund_ns
+			allowed = {
+				original_tag = CHI
+				always = no
+			}
+	
+			allowed_civil_war = {
+				always = yes
+			}
+	
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = 0.05
+				production_speed_industrial_complex_factor = 0.1
 			}
 		}
 
