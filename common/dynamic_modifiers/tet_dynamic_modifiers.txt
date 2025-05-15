@@ -1,0 +1,15 @@
+CHI_rural_society_dynamic_modifier = { #NATIONAL SPIRIT
+	enable = { always = yes }
+
+	icon = GFX_idea_SOV_red_army_ccp_2d_sov_compatibility
+
+	#INITIAL
+	stability_factor = CHI_rural_society_stability_factor
+	# production_speed_infrastructure_factor = CHI_rural_society_production_speed_infrastructure_factor
+	conscription_factor = CHI_rural_society_conscription_factor
+	research_speed_factor = CHI_rural_society_research_speed_factor
+
+
+	#FUTURE
+	
+}

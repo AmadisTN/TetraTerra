@@ -115,86 +115,86 @@ ideas = {
 		}
 
 		# -------------------------------------------- My ideas :
-		CHI_rural_society = {
-			picture = generic_agrarian_society
-			allowed = {
-				original_tag = CHI
-				always = no
-			}
+		# CHI_rural_society = {
+		# 	picture = generic_agrarian_society
+		# 	allowed = {
+		# 		original_tag = CHI
+		# 		always = no
+		# 	}
 	
-			allowed_civil_war = {
-				always = yes
-			}
+		# 	allowed_civil_war = {
+		# 		always = yes
+		# 	}
 	
-			removal_cost = -1
+		# 	removal_cost = -1
 			
-			modifier = {
-				stability_factor = 0.05
-				production_speed_infrastructure_factor = -0.25
-				conscription_factor = -0.15
-				research_speed_factor = -0.15
-			}
-		}
+		# 	modifier = {
+		# 		stability_factor = 0.05
+		# 		production_speed_infrastructure_factor = -0.25
+		# 		conscription_factor = -0.15
+		# 		research_speed_factor = -0.15
+		# 	}
+		# }
 
-		CHI_rural_society_less_infrastructure = {
-			picture = generic_agrarian_society
-			allowed = {
-				original_tag = CHI
-				always = no
-			}
+		# CHI_rural_society_less_infrastructure = {
+		# 	picture = generic_agrarian_society
+		# 	allowed = {
+		# 		original_tag = CHI
+		# 		always = no
+		# 	}
 	
-			allowed_civil_war = {
-				always = yes
-			}
+		# 	allowed_civil_war = {
+		# 		always = yes
+		# 	}
 	
-			removal_cost = -1
+		# 	removal_cost = -1
 			
-			modifier = {
-				stability_factor = 0.05
-				production_speed_infrastructure_factor = -0.1
-				conscription_factor = -0.15
-				research_speed_factor = -0.15
-			}
-		}
+		# 	modifier = {
+		# 		stability_factor = 0.05
+		# 		production_speed_infrastructure_factor = -0.1
+		# 		conscription_factor = -0.15
+		# 		research_speed_factor = -0.15
+		# 	}
+		# }
 
-		CHI_rural_society_no_research = {
-			picture = generic_agrarian_society
-			allowed = {
-				original_tag = CHI
-				always = no
-			}
+		# CHI_rural_society_no_research = {
+		# 	picture = generic_agrarian_society
+		# 	allowed = {
+		# 		original_tag = CHI
+		# 		always = no
+		# 	}
 	
-			allowed_civil_war = {
-				always = yes
-			}
+		# 	allowed_civil_war = {
+		# 		always = yes
+		# 	}
 	
-			removal_cost = -1
+		# 	removal_cost = -1
 			
-			modifier = {
-				stability_factor = 0.05
-				production_speed_infrastructure_factor = -0.1
-				conscription_factor = -0.15
-			}
-		}
+		# 	modifier = {
+		# 		stability_factor = 0.05
+		# 		production_speed_infrastructure_factor = -0.1
+		# 		conscription_factor = -0.15
+		# 	}
+		# }
 
-		CHI_rural_society_final = {
-			picture = generic_agrarian_society
-			allowed = {
-				original_tag = CHI
-				always = no
-			}
+		# CHI_rural_society_final = {
+		# 	picture = generic_agrarian_society
+		# 	allowed = {
+		# 		original_tag = CHI
+		# 		always = no
+		# 	}
 	
-			allowed_civil_war = {
-				always = yes
-			}
+		# 	allowed_civil_war = {
+		# 		always = yes
+		# 	}
 	
-			removal_cost = -1
+		# 	removal_cost = -1
 			
-			modifier = {
-				stability_factor = 0.05
-				conscription_factor = -0.15
-			}
-		}
+		# 	modifier = {
+		# 		stability_factor = 0.05
+		# 		conscription_factor = -0.15
+		# 	}
+		# }
 
 		CHI_three_principles_of_the_people_idea = {
 			#picture = POL_ideology_drift_defence

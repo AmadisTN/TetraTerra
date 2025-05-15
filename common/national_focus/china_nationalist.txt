@@ -122,13 +122,13 @@
 		completion_reward = {
 			CHI_hyper_inflation_level_up = yes
 			if = {
-				limit = { 
-					has_idea = CHI_rural_society
-				}
-				swap_ideas = {
-					remove_idea = CHI_rural_society
-					add_idea = CHI_rural_society_less_infrastructure
-				}
+				# limit = { 
+				# 	has_idea = CHI_rural_society
+				# }
+				# swap_ideas = {
+				# 	remove_idea = CHI_rural_society
+				# 	add_idea = CHI_rural_society_less_infrastructure
+				# }
 			}
 			add_war_support = 0.1
 		}
@@ -357,24 +357,24 @@
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			CHI_hyper_inflation_level_up = yes
-			if = {
-				limit = { 
-					has_idea = CHI_rural_society
-				}
-				swap_ideas = {
-					remove_idea = CHI_rural_society
-					add_idea = CHI_rural_society_no_research
-				}
-			}
-			else_if = {
-				limit = { 
-					has_idea = CHI_rural_society_less_infrastructure
-				}
-				swap_ideas = {
-					remove_idea = CHI_rural_society_less_infrastructure
-					add_idea = CHI_rural_society_no_research
-				}
-			}
+			# if = {
+			# 	limit = { 
+			# 		has_idea = CHI_rural_society
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = CHI_rural_society
+			# 		add_idea = CHI_rural_society_no_research
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = { 
+			# 		has_idea = CHI_rural_society_less_infrastructure
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = CHI_rural_society_less_infrastructure
+			# 		add_idea = CHI_rural_society_no_research
+			# 	}
+			# }
 		}
 	}
 
@@ -407,24 +407,26 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			if = {
-				limit = { 
-					has_idea = CHI_rural_society
-				}
-				swap_ideas = {
-					remove_idea = CHI_rural_society
-					add_idea = CHI_rural_society_final
-				}
-			}
-			else_if = {
-				limit = { 
-					has_idea = CHI_rural_society_less_infrastructure
-				}
-				swap_ideas = {
-					remove_idea = CHI_rural_society_less_infrastructure
-					add_idea = CHI_rural_society_final
-				}
-			}
+			# if = {
+			# 	limit = { 
+			# 		has_idea = CHI_rural_society
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = CHI_rural_society
+			# 		add_idea = CHI_rural_society_final
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = { 
+			# 		has_idea = CHI_rural_society_less_infrastructure
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = CHI_rural_society_less_infrastructure
+			# 		add_idea = CHI_rural_society_final
+			# 	}
+			# }
+			
+
 			swap_ideas = {
 				remove_idea = CHI_three_principles_of_the_people_idea
 				add_idea = CHI_three_principles_of_the_people_welfare

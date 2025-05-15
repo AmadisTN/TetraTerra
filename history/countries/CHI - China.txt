@@ -148,12 +148,18 @@ if = {
 	add_dynamic_modifier = { modifier = dense_rural_infrastructure }
 }
 
+set_variable = { CHI_rural_society_stability_factor = 0.05 }
+# set_variable = { CHI_rural_society_production_speed_infrastructure_factor = -0.25 }
+set_variable = { CHI_rural_society_conscription_factor = -0.15 }
+set_variable = { CHI_rural_society_research_speed_factor = -0.75 }
+
+add_dynamic_modifier = { modifier = CHI_rural_society_dynamic_modifier }
+
 add_ideas = {
 	CHI_nine_power_treaty_start
 	CHI_army_corruption_1
 	CHI_ineffective_bureaucracy_start
 	CHI_incompetent_officers_start
-	CHI_rural_society
 	free_trade
 	CHI_hyper_inflation_1
 	german_advisors
